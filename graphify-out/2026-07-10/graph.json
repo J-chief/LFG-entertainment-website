@@ -1,0 +1,2010 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "GEMINI.md",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gemini",
+      "community": 4,
+      "norm_label": "gemini.md"
+    },
+    {
+      "label": "CLAUDE.md \u2014 LFG Entertainment Website",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gemini_claude_md_lfg_entertainment_website",
+      "community": 4,
+      "norm_label": "claude.md \u2014 lfg entertainment website"
+    },
+    {
+      "label": "Project Snapshot",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "gemini_project_snapshot",
+      "community": 4,
+      "norm_label": "project snapshot"
+    },
+    {
+      "label": "Core Rules",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "gemini_core_rules",
+      "community": 4,
+      "norm_label": "core rules"
+    },
+    {
+      "label": "1. Think Before Coding",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "gemini_1_think_before_coding",
+      "community": 4,
+      "norm_label": "1. think before coding"
+    },
+    {
+      "label": "2. Simplicity First",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "gemini_2_simplicity_first",
+      "community": 4,
+      "norm_label": "2. simplicity first"
+    },
+    {
+      "label": "3. Surgical Changes",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "gemini_3_surgical_changes",
+      "community": 4,
+      "norm_label": "3. surgical changes"
+    },
+    {
+      "label": "4. Goal-Driven Execution",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "gemini_4_goal_driven_execution",
+      "community": 4,
+      "norm_label": "4. goal-driven execution"
+    },
+    {
+      "label": "Project Conventions",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "gemini_project_conventions",
+      "community": 5,
+      "norm_label": "project conventions"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "gemini_structure",
+      "community": 5,
+      "norm_label": "structure"
+    },
+    {
+      "label": "TypeScript",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "gemini_typescript",
+      "community": 5,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "Styling & Design",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "gemini_styling_design",
+      "community": 5,
+      "norm_label": "styling & design"
+    },
+    {
+      "label": "Animation",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "gemini_animation",
+      "community": 5,
+      "norm_label": "animation"
+    },
+    {
+      "label": "CMS (Payload)",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "gemini_cms_payload",
+      "community": 5,
+      "norm_label": "cms (payload)"
+    },
+    {
+      "label": "Payments & Security (non-negotiable)",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "gemini_payments_security_non_negotiable",
+      "community": 5,
+      "norm_label": "payments & security (non-negotiable)"
+    },
+    {
+      "label": "Performance",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "gemini_performance",
+      "community": 5,
+      "norm_label": "performance"
+    },
+    {
+      "label": "Accessibility",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "gemini_accessibility",
+      "community": 5,
+      "norm_label": "accessibility"
+    },
+    {
+      "label": "Workflow",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "gemini_workflow",
+      "community": 4,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "Definition of Done (any UI task)",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "gemini_definition_of_done_any_ui_task",
+      "community": 4,
+      "norm_label": "definition of done (any ui task)"
+    },
+    {
+      "label": "When Stuck",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "gemini_when_stuck",
+      "community": 4,
+      "norm_label": "when stuck"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "gemini_graphify",
+      "community": 4,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "content.md",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "content",
+      "community": 0,
+      "norm_label": "content.md"
+    },
+    {
+      "label": "CONTENT.md \u2014 LFG Entertainment",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "content_content_md_lfg_entertainment",
+      "community": 0,
+      "norm_label": "content.md \u2014 lfg entertainment"
+    },
+    {
+      "label": "1. Brand Voice Rules",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "content_1_brand_voice_rules",
+      "community": 0,
+      "norm_label": "1. brand voice rules"
+    },
+    {
+      "label": "2. Home Page",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "content_2_home_page",
+      "community": 6,
+      "norm_label": "2. home page"
+    },
+    {
+      "label": "Hero (pulls from featured event \u2014 see \u00a75)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "content_hero_pulls_from_featured_event_see_5",
+      "community": 6,
+      "norm_label": "hero (pulls from featured event \u2014 see \u00a75)"
+    },
+    {
+      "label": "Why Attend",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "content_why_attend",
+      "community": 6,
+      "norm_label": "why attend"
+    },
+    {
+      "label": "Upcoming Events \u2014 section header",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "content_upcoming_events_section_header",
+      "community": 6,
+      "norm_label": "upcoming events \u2014 section header"
+    },
+    {
+      "label": "Past Events \u2014 section header",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "content_past_events_section_header",
+      "community": 6,
+      "norm_label": "past events \u2014 section header"
+    },
+    {
+      "label": "Testimonials \u2014 section header",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "content_testimonials_section_header",
+      "community": 6,
+      "norm_label": "testimonials \u2014 section header"
+    },
+    {
+      "label": "Gallery Preview",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "content_gallery_preview",
+      "community": 6,
+      "norm_label": "gallery preview"
+    },
+    {
+      "label": "Newsletter",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "content_newsletter",
+      "community": 6,
+      "norm_label": "newsletter"
+    },
+    {
+      "label": "3. Events Page",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "content_3_events_page",
+      "community": 0,
+      "norm_label": "3. events page"
+    },
+    {
+      "label": "Elevate Your Experience (VIP section)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "content_elevate_your_experience_vip_section",
+      "community": 0,
+      "norm_label": "elevate your experience (vip section)"
+    },
+    {
+      "label": "4. LFG Nation Page",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "content_4_lfg_nation_page",
+      "community": 8,
+      "norm_label": "4. lfg nation page"
+    },
+    {
+      "label": "Hero",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "content_hero",
+      "community": 8,
+      "norm_label": "hero"
+    },
+    {
+      "label": "Member Benefits (bento grid)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "content_member_benefits_bento_grid",
+      "community": 8,
+      "norm_label": "member benefits (bento grid)"
+    },
+    {
+      "label": "Tiers",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "content_tiers",
+      "community": 8,
+      "norm_label": "tiers"
+    },
+    {
+      "label": "Dashboard Preview (marketing mock \u2014 uses sample data)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "content_dashboard_preview_marketing_mock_uses_sample_data",
+      "community": 8,
+      "norm_label": "dashboard preview (marketing mock \u2014 uses sample data)"
+    },
+    {
+      "label": "Real Dashboard labels",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "content_real_dashboard_labels",
+      "community": 8,
+      "norm_label": "real dashboard labels"
+    },
+    {
+      "label": "5. Featured Event \u2014 Senter Music Festival",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L98",
+      "_origin": "ast",
+      "id": "content_5_featured_event_senter_music_festival",
+      "community": 7,
+      "norm_label": "5. featured event \u2014 senter music festival"
+    },
+    {
+      "label": "Full description",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "content_full_description",
+      "community": 7,
+      "norm_label": "full description"
+    },
+    {
+      "label": "Atmosphere",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "content_atmosphere",
+      "community": 7,
+      "norm_label": "atmosphere"
+    },
+    {
+      "label": "Quick Facts (perks)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "content_quick_facts_perks",
+      "community": 7,
+      "norm_label": "quick facts (perks)"
+    },
+    {
+      "label": "Ticket Tiers",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "content_ticket_tiers",
+      "community": 7,
+      "norm_label": "ticket tiers"
+    },
+    {
+      "label": "Line-up (placeholders \u2014 replace with confirmed acts)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "content_line_up_placeholders_replace_with_confirmed_acts",
+      "community": 7,
+      "norm_label": "line-up (placeholders \u2014 replace with confirmed acts)"
+    },
+    {
+      "label": "Schedule (placeholder)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L138",
+      "_origin": "ast",
+      "id": "content_schedule_placeholder",
+      "community": 7,
+      "norm_label": "schedule (placeholder)"
+    },
+    {
+      "label": "Event FAQs",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L147",
+      "_origin": "ast",
+      "id": "content_event_faqs",
+      "community": 7,
+      "norm_label": "event faqs"
+    },
+    {
+      "label": "6. Other Mock Events",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L157",
+      "_origin": "ast",
+      "id": "content_6_other_mock_events",
+      "community": 9,
+      "norm_label": "6. other mock events"
+    },
+    {
+      "label": "Upcoming (fills the 3-card row alongside Senter \u2014 placeholder events, replace when real)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L159",
+      "_origin": "ast",
+      "id": "content_upcoming_fills_the_3_card_row_alongside_senter_placeholder_events_replace_when_real",
+      "community": 9,
+      "norm_label": "upcoming (fills the 3-card row alongside senter \u2014 placeholder events, replace when real)"
+    },
+    {
+      "label": "Past events (seed \u2014 3 events)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L164",
+      "_origin": "ast",
+      "id": "content_past_events_seed_3_events",
+      "community": 9,
+      "norm_label": "past events (seed \u2014 3 events)"
+    },
+    {
+      "label": "Venue section copy (Senter Music Festival \u2014 example pattern for all events)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L169",
+      "_origin": "ast",
+      "id": "content_venue_section_copy_senter_music_festival_example_pattern_for_all_events",
+      "community": 9,
+      "norm_label": "venue section copy (senter music festival \u2014 example pattern for all events)"
+    },
+    {
+      "label": "Don't Miss The Next One (event detail pages, per screenshot2)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "content_don_t_miss_the_next_one_event_detail_pages_per_screenshot2",
+      "community": 9,
+      "norm_label": "don't miss the next one (event detail pages, per screenshot2)"
+    },
+    {
+      "label": "7. Testimonials (seed \u2014 replace with real quotes ASAP)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "content_7_testimonials_seed_replace_with_real_quotes_asap",
+      "community": 0,
+      "norm_label": "7. testimonials (seed \u2014 replace with real quotes asap)"
+    },
+    {
+      "label": "8. Who We Are (Home page section \u2014 no separate About page)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "content_8_who_we_are_home_page_section_no_separate_about_page",
+      "community": 0,
+      "norm_label": "8. who we are (home page section \u2014 no separate about page)"
+    },
+    {
+      "label": "9. Talk Now Overlay (replaces Contact page)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L212",
+      "_origin": "ast",
+      "id": "content_9_talk_now_overlay_replaces_contact_page",
+      "community": 0,
+      "norm_label": "9. talk now overlay (replaces contact page)"
+    },
+    {
+      "label": "Cards",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "content_cards",
+      "community": 0,
+      "norm_label": "cards"
+    },
+    {
+      "label": "Inline form (cards 1\u20132)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L224",
+      "_origin": "ast",
+      "id": "content_inline_form_cards_1_2",
+      "community": 0,
+      "norm_label": "inline form (cards 1\u20132)"
+    },
+    {
+      "label": "General FAQs (shown in Events page footer section or footer accordion)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L229",
+      "_origin": "ast",
+      "id": "content_general_faqs_shown_in_events_page_footer_section_or_footer_accordion",
+      "community": 0,
+      "norm_label": "general faqs (shown in events page footer section or footer accordion)"
+    },
+    {
+      "label": "10. Global / Micro-copy",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L238",
+      "_origin": "ast",
+      "id": "content_10_global_micro_copy",
+      "community": 0,
+      "norm_label": "10. global / micro-copy"
+    },
+    {
+      "label": "Transactional emails",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L258",
+      "_origin": "ast",
+      "id": "content_transactional_emails",
+      "community": 0,
+      "norm_label": "transactional emails"
+    },
+    {
+      "label": "11. To Replace Before Launch (checklist)",
+      "file_type": "document",
+      "source_file": "content.md",
+      "source_location": "L266",
+      "_origin": "ast",
+      "id": "content_11_to_replace_before_launch_checklist",
+      "community": 0,
+      "norm_label": "11. to replace before launch (checklist)"
+    },
+    {
+      "label": "design.md",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "design",
+      "community": 1,
+      "norm_label": "design.md"
+    },
+    {
+      "label": "DESIGN.md \u2014 LFG Entertainment",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "design_design_md_lfg_entertainment",
+      "community": 1,
+      "norm_label": "design.md \u2014 lfg entertainment"
+    },
+    {
+      "label": "1. Brand",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "design_1_brand",
+      "community": 1,
+      "norm_label": "1. brand"
+    },
+    {
+      "label": "Logo Behavior",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "design_logo_behavior",
+      "community": 1,
+      "norm_label": "logo behavior"
+    },
+    {
+      "label": "2. Design System",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "design_2_design_system",
+      "community": 1,
+      "norm_label": "2. design system"
+    },
+    {
+      "label": "2.1 Color Palette (strict B&W)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "design_2_1_color_palette_strict_b_w",
+      "community": 1,
+      "norm_label": "2.1 color palette (strict b&w)"
+    },
+    {
+      "label": "2.2 Typography",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "design_2_2_typography",
+      "community": 1,
+      "norm_label": "2.2 typography"
+    },
+    {
+      "label": "2.3 Layout",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "design_2_3_layout",
+      "community": 1,
+      "norm_label": "2.3 layout"
+    },
+    {
+      "label": "2.4 Motion Language",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "design_2_4_motion_language",
+      "community": 1,
+      "norm_label": "2.4 motion language"
+    },
+    {
+      "label": "3. Global Elements",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "design_3_global_elements",
+      "community": 1,
+      "norm_label": "3. global elements"
+    },
+    {
+      "label": "3.1 Header (all pages)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "design_3_1_header_all_pages",
+      "community": 1,
+      "norm_label": "3.1 header (all pages)"
+    },
+    {
+      "label": "3.2 Footer (all pages)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "design_3_2_footer_all_pages",
+      "community": 1,
+      "norm_label": "3.2 footer (all pages)"
+    },
+    {
+      "label": "4. Pages",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "design_4_pages",
+      "community": 3,
+      "norm_label": "4. pages"
+    },
+    {
+      "label": "4.1 Home",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L104",
+      "_origin": "ast",
+      "id": "design_4_1_home",
+      "community": 3,
+      "norm_label": "4.1 home"
+    },
+    {
+      "label": "4.2 Events",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "design_4_2_events",
+      "community": 3,
+      "norm_label": "4.2 events"
+    },
+    {
+      "label": "4.3 Event Detail (template \u2014 one page per event)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "design_4_3_event_detail_template_one_page_per_event",
+      "community": 3,
+      "norm_label": "4.3 event detail (template \u2014 one page per event)"
+    },
+    {
+      "label": "Seed content \u2014 current featured event: **Senter Music Festival**",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "design_seed_content_current_featured_event_senter_music_festival",
+      "community": 3,
+      "norm_label": "seed content \u2014 current featured event: **senter music festival**"
+    },
+    {
+      "label": "4.4 Ticket Purchase",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L203",
+      "_origin": "ast",
+      "id": "design_4_4_ticket_purchase",
+      "community": 3,
+      "norm_label": "4.4 ticket purchase"
+    },
+    {
+      "label": "A. Event Selector (route: `/tickets` \u2014 where the global header \"Buy Tickets\" button leads)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L205",
+      "_origin": "ast",
+      "id": "design_a_event_selector_route_tickets_where_the_global_header_buy_tickets_button_leads",
+      "community": 3,
+      "norm_label": "a. event selector (route: `/tickets` \u2014 where the global header \"buy tickets\" button leads)"
+    },
+    {
+      "label": "B. Checkout (below the docked event header)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L215",
+      "_origin": "ast",
+      "id": "design_b_checkout_below_the_docked_event_header",
+      "community": 3,
+      "norm_label": "b. checkout (below the docked event header)"
+    },
+    {
+      "label": "4.5 Gallery",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L228",
+      "_origin": "ast",
+      "id": "design_4_5_gallery",
+      "community": 3,
+      "norm_label": "4.5 gallery"
+    },
+    {
+      "label": "4.6 LFG Nation (membership & loyalty)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L250",
+      "_origin": "ast",
+      "id": "design_4_6_lfg_nation_membership_loyalty",
+      "community": 3,
+      "norm_label": "4.6 lfg nation (membership & loyalty)"
+    },
+    {
+      "label": "4.7 Talk Now Overlay (replaces the Contact page \u2014 no separate Contact or About pages)",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L269",
+      "_origin": "ast",
+      "id": "design_4_7_talk_now_overlay_replaces_the_contact_page_no_separate_contact_or_about_pages",
+      "community": 3,
+      "norm_label": "4.7 talk now overlay (replaces the contact page \u2014 no separate contact or about pages)"
+    },
+    {
+      "label": "4.8 Legal",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L294",
+      "_origin": "ast",
+      "id": "design_4_8_legal",
+      "community": 3,
+      "norm_label": "4.8 legal"
+    },
+    {
+      "label": "5. Technical & UX Requirements",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L299",
+      "_origin": "ast",
+      "id": "design_5_technical_ux_requirements",
+      "community": 1,
+      "norm_label": "5. technical & ux requirements"
+    },
+    {
+      "label": "6. Design Inspiration & Bar",
+      "file_type": "document",
+      "source_file": "design.md",
+      "source_location": "L312",
+      "_origin": "ast",
+      "id": "design_6_design_inspiration_bar",
+      "community": 1,
+      "norm_label": "6. design inspiration & bar"
+    },
+    {
+      "label": "task-frontend.md",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "task_frontend",
+      "community": 2,
+      "norm_label": "task-frontend.md"
+    },
+    {
+      "label": "TASK.md \u2014 LFG Entertainment (FRONT-END ONLY PHASE)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "community": 2,
+      "norm_label": "task.md \u2014 lfg entertainment (front-end only phase)"
+    },
+    {
+      "label": "1. Tech Stack (front-end phase)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "task_frontend_1_tech_stack_front_end_phase",
+      "community": 2,
+      "norm_label": "1. tech stack (front-end phase)"
+    },
+    {
+      "label": "2. Structure",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "task_frontend_2_structure",
+      "community": 2,
+      "norm_label": "2. structure"
+    },
+    {
+      "label": "3. Mock Data Contract (`/lib/mock-data.ts`)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "task_frontend_3_mock_data_contract_lib_mock_data_ts",
+      "community": 2,
+      "norm_label": "3. mock data contract (`/lib/mock-data.ts`)"
+    },
+    {
+      "label": "4. Build Phases",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "task_frontend_4_build_phases",
+      "community": 2,
+      "norm_label": "4. build phases"
+    },
+    {
+      "label": "Phase 0 \u2014 Shell (foundation)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "task_frontend_phase_0_shell_foundation",
+      "community": 2,
+      "norm_label": "phase 0 \u2014 shell (foundation)"
+    },
+    {
+      "label": "Phase 1 \u2014 Home (cinetica-style)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "task_frontend_phase_1_home_cinetica_style",
+      "community": 2,
+      "norm_label": "phase 1 \u2014 home (cinetica-style)"
+    },
+    {
+      "label": "Phase 2 \u2014 Events + Event Detail",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "task_frontend_phase_2_events_event_detail",
+      "community": 2,
+      "norm_label": "phase 2 \u2014 events + event detail"
+    },
+    {
+      "label": "Phase 3 \u2014 Ticket Purchase UI (mock)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "task_frontend_phase_3_ticket_purchase_ui_mock",
+      "community": 2,
+      "norm_label": "phase 3 \u2014 ticket purchase ui (mock)"
+    },
+    {
+      "label": "Phase 4 \u2014 Gallery (phantom-style)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "task_frontend_phase_4_gallery_phantom_style",
+      "community": 2,
+      "norm_label": "phase 4 \u2014 gallery (phantom-style)"
+    },
+    {
+      "label": "Phase 5 \u2014 LFG Nation + Talk Now",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "task_frontend_phase_5_lfg_nation_talk_now",
+      "community": 2,
+      "norm_label": "phase 5 \u2014 lfg nation + talk now"
+    },
+    {
+      "label": "Phase 6 \u2014 Polish",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L131",
+      "_origin": "ast",
+      "id": "task_frontend_phase_6_polish",
+      "community": 2,
+      "norm_label": "phase 6 \u2014 polish"
+    },
+    {
+      "label": "5. Backend Swap-In Later (do NOT build now)",
+      "file_type": "document",
+      "source_file": "task-frontend.md",
+      "source_location": "L141",
+      "_origin": "ast",
+      "id": "task_frontend_5_backend_swap_in_later_do_not_build_now",
+      "community": 2,
+      "norm_label": "5. backend swap-in later (do not build now)"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "gemini",
+      "target": "gemini_claude_md_lfg_entertainment_website",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_core_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_definition_of_done_any_ui_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_project_conventions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_project_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_when_stuck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "gemini_claude_md_lfg_entertainment_website",
+      "target": "gemini_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "gemini_core_rules",
+      "target": "gemini_1_think_before_coding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "gemini_core_rules",
+      "target": "gemini_2_simplicity_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "gemini_core_rules",
+      "target": "gemini_3_surgical_changes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "gemini_core_rules",
+      "target": "gemini_4_goal_driven_execution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_accessibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_animation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_cms_payload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_payments_security_non_negotiable",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_performance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_styling_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GEMINI.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "gemini_project_conventions",
+      "target": "gemini_typescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "content",
+      "target": "content_content_md_lfg_entertainment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_10_global_micro_copy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_11_to_replace_before_launch_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_1_brand_voice_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_2_home_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_3_events_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_4_lfg_nation_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_5_featured_event_senter_music_festival",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_6_other_mock_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_7_testimonials_seed_replace_with_real_quotes_asap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_8_who_we_are_home_page_section_no_separate_about_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "content_content_md_lfg_entertainment",
+      "target": "content_9_talk_now_overlay_replaces_contact_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_gallery_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_hero_pulls_from_featured_event_see_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_newsletter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_past_events_section_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_testimonials_section_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_upcoming_events_section_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "content_2_home_page",
+      "target": "content_why_attend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "content_3_events_page",
+      "target": "content_elevate_your_experience_vip_section",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "content_4_lfg_nation_page",
+      "target": "content_dashboard_preview_marketing_mock_uses_sample_data",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "content_4_lfg_nation_page",
+      "target": "content_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "content_4_lfg_nation_page",
+      "target": "content_member_benefits_bento_grid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "content_4_lfg_nation_page",
+      "target": "content_real_dashboard_labels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "content_4_lfg_nation_page",
+      "target": "content_tiers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_atmosphere",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_event_faqs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_full_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_line_up_placeholders_replace_with_confirmed_acts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_quick_facts_perks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_schedule_placeholder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "content_5_featured_event_senter_music_festival",
+      "target": "content_ticket_tiers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L173",
+      "weight": 1.0,
+      "source": "content_6_other_mock_events",
+      "target": "content_don_t_miss_the_next_one_event_detail_pages_per_screenshot2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "content_6_other_mock_events",
+      "target": "content_past_events_seed_3_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L159",
+      "weight": 1.0,
+      "source": "content_6_other_mock_events",
+      "target": "content_upcoming_fills_the_3_card_row_alongside_senter_placeholder_events_replace_when_real",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "content_6_other_mock_events",
+      "target": "content_venue_section_copy_senter_music_festival_example_pattern_for_all_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L217",
+      "weight": 1.0,
+      "source": "content_9_talk_now_overlay_replaces_contact_page",
+      "target": "content_cards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "content_9_talk_now_overlay_replaces_contact_page",
+      "target": "content_general_faqs_shown_in_events_page_footer_section_or_footer_accordion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L224",
+      "weight": 1.0,
+      "source": "content_9_talk_now_overlay_replaces_contact_page",
+      "target": "content_inline_form_cards_1_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "content.md",
+      "source_location": "L258",
+      "weight": 1.0,
+      "source": "content_10_global_micro_copy",
+      "target": "content_transactional_emails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "design",
+      "target": "design_design_md_lfg_entertainment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_1_brand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_2_design_system",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_3_global_elements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_4_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_5_technical_ux_requirements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L312",
+      "weight": 1.0,
+      "source": "design_design_md_lfg_entertainment",
+      "target": "design_6_design_inspiration_bar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "design_1_brand",
+      "target": "design_logo_behavior",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "design_2_design_system",
+      "target": "design_2_1_color_palette_strict_b_w",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "design_2_design_system",
+      "target": "design_2_2_typography",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "design_2_design_system",
+      "target": "design_2_3_layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "design_2_design_system",
+      "target": "design_2_4_motion_language",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "design_3_global_elements",
+      "target": "design_3_1_header_all_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "design_3_global_elements",
+      "target": "design_3_2_footer_all_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_1_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_2_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_3_event_detail_template_one_page_per_event",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L203",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_4_ticket_purchase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_5_gallery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_6_lfg_nation_membership_loyalty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L269",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_7_talk_now_overlay_replaces_the_contact_page_no_separate_contact_or_about_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L294",
+      "weight": 1.0,
+      "source": "design_4_pages",
+      "target": "design_4_8_legal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "design_4_3_event_detail_template_one_page_per_event",
+      "target": "design_seed_content_current_featured_event_senter_music_festival",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L205",
+      "weight": 1.0,
+      "source": "design_4_4_ticket_purchase",
+      "target": "design_a_event_selector_route_tickets_where_the_global_header_buy_tickets_button_leads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "design.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "design_4_4_ticket_purchase",
+      "target": "design_b_checkout_below_the_docked_event_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "task_frontend",
+      "target": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "target": "task_frontend_1_tech_stack_front_end_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "target": "task_frontend_2_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "target": "task_frontend_3_mock_data_contract_lib_mock_data_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "target": "task_frontend_4_build_phases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "task_frontend_task_md_lfg_entertainment_front_end_only_phase",
+      "target": "task_frontend_5_backend_swap_in_later_do_not_build_now",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_0_shell_foundation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_1_home_cinetica_style",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_2_events_event_detail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_3_ticket_purchase_ui_mock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_4_gallery_phantom_style",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_5_lfg_nation_talk_now",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "task-frontend.md",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "task_frontend_4_build_phases",
+      "target": "task_frontend_phase_6_polish",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}

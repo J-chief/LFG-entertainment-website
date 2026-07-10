@@ -1,0 +1,27 @@
+{
+  ".gemini/settings.json": {
+    "mtime": 1783672943.9136808,
+    "ast_hash": "14ab956861e6823cd9ec0f59b0b26cf5",
+    "semantic_hash": ""
+  },
+  "GEMINI.md": {
+    "mtime": 1783630823.4947774,
+    "ast_hash": "28ccc56161dd79a7d88d2f866d5d671c",
+    "semantic_hash": ""
+  },
+  "content.md": {
+    "mtime": 1783652040.0,
+    "ast_hash": "6d07659004e6bd5e3fcae05827671611",
+    "semantic_hash": ""
+  },
+  "design.md": {
+    "mtime": 1783652040.0,
+    "ast_hash": "c2aad489fd743cc757fe208acb65e787",
+    "semantic_hash": ""
+  },
+  "task-frontend.md": {
+    "mtime": 1783652040.0,
+    "ast_hash": "1af4a2be06c1575153f172d466cdfab4",
+    "semantic_hash": ""
+  }
+}

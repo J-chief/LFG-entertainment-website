@@ -1,46 +1,62 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import TiltCard from '@/components/ui/tilt-card';
-import { useTicketsModal } from '@/lib/context';
-import { mockEvents, mockPastEvents, testimonials } from '@/lib/mock-data';
-import CountdownTimer from '@/components/ui/countdown-timer';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import TiltCard from "@/components/ui/tilt-card";
+import { useTicketsModal } from "@/lib/context";
+import { mockEvents, mockPastEvents, testimonials } from "@/lib/mock-data";
+import CountdownTimer from "@/components/ui/countdown-timer";
+import HeroFlame from "@/components/effects/hero-flame";
+import PageBgVideo from "@/components/effects/page-bg-video";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 // Mosaic grayscale pictures from Unsplash
 const MOSAIC_IMAGES = [
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=300&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=300&auto=format&fit=crop',
+  "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=700&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=500&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=700&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1493676304819-0d7a77d26ef0?q=80&w=500&auto=format&fit=crop",
+];
+
+// Grid layout: [colSpan, rowSpan] for each image in a 6-col grid
+const MOSAIC_GRID: [number, number][] = [
+  [2, 2], // 0 — big square
+  [1, 1], // 1 — small
+  [1, 2], // 2 — tall
+  [2, 1], // 3 — wide
+  [1, 1], // 4 — small
+  [1, 1], // 5 — small
+  [2, 1], // 6 — wide
+  [1, 2], // 7 — tall
+  [1, 1], // 8 — small
+  [2, 1], // 9 — wide
+  [1, 1], // 10 — small
 ];
 
 export default function HomePage() {
   const mosaicRef = useRef<HTMLDivElement | null>(null);
   const statsRef = useRef<HTMLDivElement | null>(null);
   const whyRef = useRef<HTMLDivElement | null>(null);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState("");
   const { openTickets } = useTicketsModal();
 
   // Clock ticker in Bottom strip
@@ -48,12 +64,12 @@ export default function HomePage() {
     const updateTime = () => {
       const date = new Date();
       setCurrentTime(
-        date.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
+        date.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
           hour12: false,
-        }) + ' UTC'
+        }) + " UTC",
       );
     };
     updateTime();
@@ -61,11 +77,38 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  // Resize Lenis when DOM updates or images load
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const resizeHandler = () => {
+      if ((window as any).lenis) {
+        (window as any).lenis.resize();
+      }
+    };
+
+    // Run initially
+    resizeHandler();
+
+    // Observe size changes of the document body (since page contents render asynchronously)
+    const observer = new ResizeObserver(() => {
+      resizeHandler();
+    });
+
+    if (document.body) {
+      observer.observe(document.body);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   // Compute nearest upcoming event by startDate
   const upcomingEvents = mockEvents.filter(
-    (e) => new Date(e.startDate) >= new Date('2026-07-10')
+    (e) => new Date(e.startDate) >= new Date("2026-07-10"),
   );
-  
+
   const featuredEvent = upcomingEvents.reduce((prev, curr) => {
     return new Date(curr.startDate) < new Date(prev.startDate) ? curr : prev;
   }, upcomingEvents[0]);
@@ -73,129 +116,151 @@ export default function HomePage() {
   // GSAP animations for Scroll driven reveals
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) return;
 
-    // 1. Who We Are: Mosaic scattered images parallax
-    const mosaicImages = mosaicRef.current?.querySelectorAll('.mosaic-img');
-    if (mosaicImages && mosaicImages.length > 0) {
-      mosaicImages.forEach((container, index) => {
-        const img = container.querySelector('img');
+    const ctx = gsap.context(() => {
+      // 0. Generic section reveals — fade + rise, tied directly to scroll
+      //    (scrub maps progress to scroll position, so scrolling back up
+      //     reverses the reveal exactly the way it played in).
+      gsap.utils.toArray<HTMLElement>(".reveal").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 92%",
+              end: "top 60%",
+              scrub: true,
+            },
+          },
+        );
+      });
+
+      // 1. Who We Are: Mosaic scattered images parallax + scroll-linked fade
+      const mosaicImages = mosaicRef.current?.querySelectorAll(".mosaic-img");
+      mosaicImages?.forEach((container, index) => {
+        const img = container.querySelector("img");
         if (!img) return;
 
         const speed = (index % 3) * 15 + 10; // different speeds
-        
+
         // Parallax effect on the inner image (scaled up to prevent background exposure)
         gsap.fromTo(
           img,
           { y: -speed },
           {
             y: speed,
-            ease: 'none',
+            ease: "none",
             scrollTrigger: {
               trigger: container,
-              start: 'top bottom',
-              end: 'bottom top',
+              start: "top bottom",
+              end: "bottom top",
               scrub: true,
             },
-          }
+          },
         );
-        
-        // Fade in effect on the container itself to keep grid alignment clean
+
+        // Fade/scale in tied to scroll position (reverses on scroll up)
         gsap.fromTo(
           container,
           { opacity: 0, scale: 0.95 },
           {
             opacity: 1,
             scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
+            ease: "none",
             scrollTrigger: {
               trigger: container,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
+              start: "top 95%",
+              end: "top 70%",
+              scrub: true,
+            },
+          },
         );
       });
-    }
 
-    // 2. Stats count-ups
-    const statCounters = statsRef.current?.querySelectorAll('.stat-count');
-    if (statCounters && statCounters.length > 0) {
-      statCounters.forEach((counter) => {
-        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-        const formatPlus = counter.getAttribute('data-format-plus') === 'true';
-        
+      // 2. Stats count-ups — driven by scroll (count down again on scroll up)
+      const statCounters = statsRef.current?.querySelectorAll(".stat-count");
+      statCounters?.forEach((counter) => {
+        const target = parseInt(counter.getAttribute("data-target") || "0", 10);
+        const formatPlus = counter.getAttribute("data-format-plus") === "true";
+
         gsap.fromTo(
           counter,
-          { textContent: '0' },
+          { textContent: "0" },
           {
             textContent: target,
-            duration: 2,
-            ease: 'power3.out',
+            ease: "none",
             snap: { textContent: 1 },
             scrollTrigger: {
               trigger: counter,
-              start: 'top 85%',
-              once: true,
+              start: "top 95%",
+              end: "top 65%",
+              scrub: true,
             },
             onUpdate: function () {
               const currentVal = counter.textContent;
               if (currentVal) {
-                counter.textContent = currentVal + (formatPlus ? '+' : '');
+                counter.textContent = currentVal + (formatPlus ? "+" : "");
               }
             },
-          }
+          },
         );
       });
-    }
 
-    // 3. Why Attend: Line mask-reveal
-    const maskLines = whyRef.current?.querySelectorAll('.mask-line');
-    if (maskLines && maskLines.length > 0) {
-      maskLines.forEach((line) => {
+      // 3. Why Attend: Line mask-reveal tied to scroll
+      const maskLines = whyRef.current?.querySelectorAll(".mask-line");
+      maskLines?.forEach((line) => {
         gsap.fromTo(
           line,
-          { clipPath: 'inset(0 100% 0 0)' },
+          { clipPath: "inset(0 100% 0 0)" },
           {
-            clipPath: 'inset(0 0% 0 0)',
-            duration: 1.2,
-            ease: 'power4.inOut',
+            clipPath: "inset(0 0% 0 0)",
+            ease: "none",
             scrollTrigger: {
               trigger: line,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              start: "top 92%",
+              end: "top 60%",
+              scrub: true,
             },
-          }
+          },
         );
       });
-    }
+    });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail) return;
-    console.log('Newsletter subscription email:', newsletterEmail);
+    console.log("Newsletter subscription email:", newsletterEmail);
     setNewsletterSuccess(true);
   };
 
   return (
-    <div className="w-full bg-black text-white relative">
+    <div className="w-full bg-black text-white relative isolate">
+      {/* Full-page background video (deepest layer) */}
+      <PageBgVideo />
+
       {/* 1. HERO SECTION */}
       <section className="relative w-full h-[100svh] flex flex-col justify-between items-center text-center overflow-hidden pt-20">
         {/* Background Loop Video / Grayscale Static Fallback */}
         <div className="absolute inset-0 z-0">
-          <div className={cn(
-            "absolute inset-0 transition-colors duration-500 z-10",
-            featuredEvent.slug === 'senter-music-festival-2026' ? 'bg-black/30' : 'bg-black/70'
-          )} />
+          <div
+            className={cn(
+              "absolute inset-0 transition-colors duration-500 z-10",
+              featuredEvent.slug === "senter-music-festival-2026"
+                ? "bg-black/30"
+                : "bg-black/70",
+            )}
+          />
           <motion.div
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
@@ -211,9 +276,9 @@ export default function HomePage() {
                 playsInline
                 className={cn(
                   "w-full h-full object-cover transition-all duration-500",
-                  featuredEvent.slug === 'senter-music-festival-2026'
+                  featuredEvent.slug === "senter-music-festival-2026"
                     ? "contrast-[110%] brightness-90"
-                    : "filter grayscale contrast-[120%] brightness-40"
+                    : "filter grayscale contrast-[120%] brightness-40",
                 )}
               />
             ) : (
@@ -224,17 +289,20 @@ export default function HomePage() {
                 priority
                 className={cn(
                   "object-cover transition-all duration-500",
-                  featuredEvent.slug === 'senter-music-festival-2026'
+                  featuredEvent.slug === "senter-music-festival-2026"
                     ? "contrast-[110%] brightness-90"
-                    : "filter grayscale contrast-[120%] brightness-40"
+                    : "filter grayscale contrast-[120%] brightness-40",
                 )}
               />
             )}
           </motion.div>
         </div>
 
+        {/* Slow grayscale flame rising from the bottom edge */}
+        <HeroFlame />
+
         {/* Centered stack content */}
-        <div className="relative z-20 flex-1 flex flex-col items-center justify-center max-w-4xl px-6 pt-10">
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-6 pt-10">
           {/* Meta row badges */}
           <div className="flex items-center gap-3 mb-6">
             <span className="px-3 py-1 rounded-full border border-white/20 bg-white/5 text-[9px] font-display tracking-[0.25em] uppercase">
@@ -252,7 +320,7 @@ export default function HomePage() {
           </h1>
 
           {/* Short description */}
-          <p className="text-sm md:text-base text-gray-400 text-ch-max mb-8 font-sans">
+          <p className="relative z-30 text-sm md:text-base text-gray-300 w-full max-w-[65ch] mx-auto mb-8 font-sans leading-relaxed">
             {featuredEvent.shortDescription}
           </p>
 
@@ -291,50 +359,76 @@ export default function HomePage() {
       </section>
 
       {/* 2. (WHO WE ARE) ABOUT SECTION */}
-      <section className="relative py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-gray-900 overflow-hidden">
+      <section className="relative py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-white/40 overflow-hidden">
         <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
           (WHO WE ARE)
         </span>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-24">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-24">
           <div>
             <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase leading-tight">
-              We Don&apos;t Host Events.<br />We Build Nights.
+              We Don&apos;t Host Events.
+              <br />
+              We Build Nights.
             </h2>
           </div>
           <div className="text-gray-400 text-sm md:text-base space-y-6 leading-relaxed">
             <p>
-              We live and breathe entertainment. From arena anthems to intimate showcases, LFG Entertainment curates unforgettable moments through electrifying live events, global concerts, and bespoke experiences across Asia-Pacific and beyond — 🇲🇾 🇸🇬 🇹🇭 🇮🇳 🇮🇩 🇱🇰 🇦🇺.
+              We live and breathe entertainment. From arena anthems to intimate
+              showcases, LFG Entertainment curates unforgettable moments through
+              electrifying live events, global concerts, and bespoke experiences
+              across Asia-Pacific and beyond.
             </p>
             <p>
-              Every LFG stage is engineered for one thing: the moment the drop hits and thousands of people move as one. World-class production. International headliners. Local talent on the biggest stages they&apos;ve ever stood on.
+              Every LFG stage is engineered for one thing: the moment the drop
+              hits and thousands of people move as one. World-class production.
+              International headliners. Local talent on the biggest stages
+              they&apos;ve ever stood on.
             </p>
             <p>
-              Our passion? Turning every stage into a story you&apos;ll remember forever — connecting fans and artists like never before.
+              Our passion? Turning every stage into a story you&apos;ll remember
+              forever — connecting fans and artists like never before.
             </p>
           </div>
         </div>
 
-        {/* Animated Image Mosaic */}
-        <div ref={mosaicRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24">
-          {MOSAIC_IMAGES.map((url, idx) => (
-            <div
-              key={idx}
-              className="mosaic-img relative aspect-[3/4] overflow-hidden rounded filter grayscale contrast-125 brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-500"
-            >
-              <Image
-                src={url}
-                alt={`LFG Event Mosaic ${idx}`}
-                fill
-                sizes="(max-width: 768px) 50vw, 16vw"
-                className="object-cover scale-125"
-              />
-            </div>
-          ))}
+        {/* Animated Image Mosaic — varied-size CSS grid */}
+        <div
+          ref={mosaicRef}
+          className="grid grid-cols-6 auto-rows-[120px] gap-3 mb-24"
+        >
+          {MOSAIC_IMAGES.map((url, idx) => {
+            const [colSpan, rowSpan] = MOSAIC_GRID[idx] ?? [1, 1];
+            return (
+              <div
+                key={idx}
+                className="mosaic-img relative overflow-hidden rounded filter grayscale contrast-125 brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-500"
+                style={{
+                  gridColumn: `span ${colSpan}`,
+                  gridRow: `span ${rowSpan}`,
+                }}
+              >
+                <Image
+                  src={url}
+                  alt={`LFG Event Mosaic ${idx}`}
+                  fill
+                  priority={idx < 4}
+                  sizes={colSpan === 2
+                    ? '(max-width: 768px) 100vw, 33vw'
+                    : '(max-width: 768px) 50vw, 17vw'
+                  }
+                  className="object-cover scale-110"
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* Animated Stats Row */}
-        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-gray-900 text-center">
+        <div
+          ref={statsRef}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/40 text-center"
+        >
           <div className="flex flex-col gap-2">
             <span className="text-xs tracking-wide-accent text-gray-500 uppercase font-display">
               Events Produced
@@ -390,123 +484,142 @@ export default function HomePage() {
       </section>
 
       {/* 3. (ON THE CALENDAR) UPCOMING EVENTS */}
-      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-gray-900">
-        <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
-          (ON THE CALENDAR)
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16">
-          What&apos;s Coming
-        </h2>
+      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-white/40">
+        <div className="reveal">
+          <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
+            (ON THE CALENDAR)
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16">
+            What&apos;s Coming
+          </h2>
+        </div>
 
         {/* Card Row Grid (Minimum 3 cards in row) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
           {mockEvents.map((event) => {
-            const isSoldOut = event.ticketTiers.every((t) => t.quantitySold >= t.quantityTotal);
+            const isSoldOut = event.ticketTiers.every(
+              (t) => t.quantitySold >= t.quantityTotal,
+            );
             return (
               <TiltCard key={event.slug}>
-                <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[480px]">
-                {/* Poster Container */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden">
-                  {isSoldOut && (
-                    <div className="absolute top-4 right-4 z-20 px-3 py-1 rounded bg-black text-white text-[9px] font-display font-bold uppercase tracking-wider">
-                      SOLD OUT
-                    </div>
+                <div
+                  className={cn(
+                    'relative h-full',
+                    event.slug === 'senter-music-festival-2026' && 'senter-glow',
                   )}
-                  <Image
-                    src={event.posterImage}
-                    alt={event.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover img-grayscale group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Content Panel */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div className="flex flex-col gap-2">
-                    <span className="text-[10px] tracking-wide-accent font-display text-gray-500 uppercase flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(event.startDate).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
-                    </span>
-                    <h3 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-white transition-colors">
-                      {event.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
-                      {event.shortDescription}
-                    </p>
+                >
+                <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[480px]">
+                  {/* Poster Container */}
+                  <div className="relative aspect-[9/16] w-full overflow-hidden">
+                    {isSoldOut && (
+                      <div className="absolute top-4 right-4 z-20 px-3 py-1 rounded bg-black text-white text-[9px] font-display font-bold uppercase tracking-wider">
+                        SOLD OUT
+                      </div>
+                    )}
+                    <Image
+                      src={event.posterImage}
+                      alt={event.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className={cn(
+                        "object-cover group-hover:scale-105 transition-transform duration-500",
+                        event.slug === 'senter-music-festival-2026' ? '' : 'img-grayscale'
+                      )}
+                    />
                   </div>
 
-                  <div className="flex items-center gap-3 mt-6 border-t border-gray-900 pt-4">
-                    <button
-                      onClick={(e) => {
-                        if (isSoldOut) e.preventDefault();
-                        else openTickets(event.slug);
-                      }}
-                      className={`flex-1 text-center py-2.5 rounded-full text-[10px] font-display uppercase tracking-wider ${
-                        isSoldOut
-                          ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
-                          : 'bg-white text-black hover:bg-white/95 cursor-pointer'
-                      } transition-colors`}
-                    >
-                      Buy Tickets
-                    </button>
-                    <Link
-                      href={`/events/${event.slug}`}
-                      scroll={false}
-                      className="flex-1 text-center py-2.5 rounded-full border border-gray-700 hover:bg-white hover:text-black hover:border-white transition-colors text-[10px] font-display uppercase tracking-wider"
-                    >
-                      Learn More
-                    </Link>
+                  {/* Content Panel */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col gap-2">
+                      <span className="text-[10px] tracking-wide-accent font-display text-gray-500 uppercase flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {new Date(event.startDate).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </span>
+                      <h3 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-white transition-colors">
+                        {event.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                        {event.shortDescription}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-3 mt-6 border-t border-gray-900 pt-4">
+                      <button
+                        onClick={(e) => {
+                          if (isSoldOut) e.preventDefault();
+                          else openTickets(event.slug);
+                        }}
+                        className={`flex-1 text-center py-2.5 rounded-full text-[10px] font-display uppercase tracking-wider ${
+                          isSoldOut
+                            ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                            : "bg-white text-black hover:bg-white/95 cursor-pointer"
+                        } transition-colors`}
+                      >
+                        Buy Tickets
+                      </button>
+                      <Link
+                        href={`/events/${event.slug}`}
+                        scroll={false}
+                        className="flex-1 text-center py-2.5 rounded-full border border-gray-700 hover:bg-white hover:text-black hover:border-white transition-colors text-[10px] font-display uppercase tracking-wider"
+                      >
+                        Learn More
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </TiltCard>
+                </div>
+              </TiltCard>
             );
           })}
         </div>
       </section>
 
       {/* 4. (WHY ATTEND) MASK REVEALS */}
-      <section ref={whyRef} className="py-24 md:py-36 px-6 md:px-12 bg-black-pure text-white border-b border-gray-900">
+      <section
+        ref={whyRef}
+        className="py-24 md:py-36 px-6 md:px-12 text-white border-b border-white/40"
+      >
         <div className="max-w-4xl mx-auto">
-          <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
-            (WHY ATTEND)
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16 leading-tight max-w-2xl">
-            Some nights you remember forever. We build them.
-          </h2>
+          <div className="reveal">
+            <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
+              (WHY ATTEND)
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16 leading-tight max-w-2xl">
+              Some nights you remember forever. We build them.
+            </h2>
+          </div>
 
           <div className="space-y-12">
             {[
               {
-                num: '01',
-                heading: 'Sound you feel.',
-                desc: 'International-grade production. Stages engineered to shake the ground.',
+                num: "01",
+                heading: "Sound you feel.",
+                desc: "International-grade production. Stages engineered to shake the ground.",
               },
               {
-                num: '02',
-                heading: 'The right crowd.',
-                desc: 'Thousands of people, one frequency. Strangers at 6PM, family by midnight.',
+                num: "02",
+                heading: "The right crowd.",
+                desc: "Thousands of people, one frequency. Strangers at 6PM, family by midnight.",
               },
               {
-                num: '03',
-                heading: 'More than music.',
-                desc: 'Pyro, visuals, themed worlds, food, chaos — every sense, all night.',
+                num: "03",
+                heading: "More than music.",
+                desc: "Pyro, visuals, themed worlds, food, chaos — every sense, all night.",
               },
               {
-                num: '04',
-                heading: 'No bad nights.',
-                desc: 'Every LFG event is curated, produced, and obsessed over. We don&apos;t do average.',
+                num: "04",
+                heading: "No bad nights.",
+                desc: "Every LFG event is curated, produced, and obsessed over. We don&apos;t do average.",
               },
             ].map((item) => (
               <div
                 key={item.num}
-                className="mask-line border-t border-gray-900 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-start"
-                style={{ clipPath: 'inset(0 100% 0 0)' }}
+                className="mask-line border-t border-white/40 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-start"
+                style={{ clipPath: "inset(0 100% 0 0)" }}
               >
                 <span className="md:col-span-1 text-gray-500 font-display text-sm font-bold">
                   {item.num}
@@ -526,24 +639,26 @@ export default function HomePage() {
       </section>
 
       {/* 5. (THE ARCHIVE) PAST EVENTS */}
-      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-gray-900">
-        <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
-          (THE ARCHIVE)
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16">
-          Nights We Made History
-        </h2>
+      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-white/40">
+        <div className="reveal">
+          <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
+            (THE ARCHIVE)
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-16">
+            Nights We Made History
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
           {mockPastEvents.map((event) => (
             <Link
               key={event.slug}
               href={`/gallery/${event.slug}`}
               scroll={false}
-              className="group relative flex flex-col bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-500 transition-all duration-300 cursor-none-desktop"
+              className="group relative flex flex-col h-full bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-500 transition-all duration-300 cursor-none-desktop"
               data-cursor="view"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src={event.coverImage}
                   alt={event.title}
@@ -552,14 +667,16 @@ export default function HomePage() {
                   className="object-cover img-grayscale group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <span className="text-[9px] tracking-wide-accent font-display text-gray-500 uppercase block mb-1">
-                  {event.date} · {event.location}
+                  {event.date}{event.location ? ` · ${event.location}` : ''}
                 </span>
                 <h3 className="text-lg font-display font-bold uppercase tracking-tight mb-2">
                   {event.title}
                 </h3>
-                <p className="text-xs text-gray-400 leading-relaxed font-sans">{event.oneLiner}</p>
+                <p className="text-xs text-gray-400 leading-relaxed font-sans mt-auto">
+                  {event.oneLiner}
+                </p>
               </div>
             </Link>
           ))}
@@ -567,8 +684,8 @@ export default function HomePage() {
       </section>
 
       {/* 6. (WORD ON THE STREET) TESTIMONIALS */}
-      <section className="py-20 bg-black-pure overflow-hidden border-b border-gray-900">
-        <div className="px-6 md:px-12 max-w-6xl mx-auto mb-8">
+      <section className="py-20 overflow-hidden border-b border-white/40">
+        <div className="reveal px-6 md:px-12 max-w-6xl mx-auto mb-8">
           <span className="text-xs tracking-wide-accent text-gray-500 font-display block mb-4">
             (WORD ON THE STREET)
           </span>
@@ -604,8 +721,8 @@ export default function HomePage() {
       </section>
 
       {/* 7. (THE VAULT) GALLERY PREVIEW COLLAGE */}
-      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-gray-900">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="py-24 md:py-36 px-6 md:px-12 max-w-6xl mx-auto border-b border-white/40">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-4 flex flex-col items-start gap-6">
             <span className="text-xs tracking-wide-accent text-gray-500 font-display uppercase">
               (THE VAULT)
@@ -614,7 +731,8 @@ export default function HomePage() {
               If you know, you know.
             </h2>
             <p className="text-xs text-gray-400 font-sans leading-relaxed">
-              Explore the raw, uncurated imagery of LFG nightlife across APAC. Heavy bass, sweat, flashing lights, and family.
+              Explore the raw, uncurated imagery of LFG nightlife across APAC.
+              Heavy bass, sweat, flashing lights, and family.
             </p>
             <Link
               href="/gallery"
@@ -669,14 +787,15 @@ export default function HomePage() {
       </section>
 
       {/* 8. NEWSLETTER */}
-      <section className="py-24 md:py-36 px-6 md:px-12 bg-black-pure border-b border-gray-900">
-        <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+      <section className="py-24 md:py-36 px-6 md:px-12 border-b border-white/40">
+        <div className="reveal max-w-2xl mx-auto text-center flex flex-col items-center">
           <span className="w-2.5 h-2.5 rounded-full bg-white mb-6 animate-pulse" />
           <h2 className="text-3xl md:text-5xl font-display font-black tracking-tight uppercase mb-4">
             Be first through the door.
           </h2>
           <p className="text-sm text-gray-400 text-ch-max mb-8 font-sans leading-relaxed">
-            Line-up drops, presale codes, secret events. Straight to your inbox. No spam, ever.
+            Line-up drops, presale codes, secret events. Straight to your inbox.
+            No spam, ever.
           </p>
 
           {newsletterSuccess ? (
@@ -685,11 +804,16 @@ export default function HomePage() {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-white/5 border border-gray-800 p-8 rounded-lg text-center w-full"
             >
-              <h4 className="text-lg font-display font-bold uppercase mb-2">You&apos;re on the list.</h4>
+              <h4 className="text-lg font-display font-bold uppercase mb-2">
+                You&apos;re on the list.
+              </h4>
               <p className="text-gray-400 font-sans">See you inside.</p>
             </motion.div>
           ) : (
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
+            <form
+              onSubmit={handleNewsletterSubmit}
+              className="flex flex-col sm:flex-row gap-4 w-full"
+            >
               <input
                 type="email"
                 required

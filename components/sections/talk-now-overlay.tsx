@@ -4,11 +4,44 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTalkNow } from '@/lib/context';
 import { siteSettings } from '@/lib/mock-data';
-import { ArrowLeft, ArrowRight, X, Mail, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import Link from 'next/link';
+
+// Custom Brand SVGs
+const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+);
+
+const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+);
+
+const YoutubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
+);
+
+const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.709 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
+
+const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M12.525.02c1.31-.03 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.95.84 2.16 1.41 3.43 1.62.01 1.34.01 2.68 0 4.02-1.32-.08-2.61-.63-3.6-1.5-.7-.6-1.23-1.39-1.54-2.28-.02 2.76-.01 5.51-.02 8.27-.08 1.45-.63 2.87-1.57 3.93-1.22 1.29-3.04 2.03-4.83 1.94-1.74-.03-3.45-.82-4.52-2.19C3.89 16.64 3.4 14.59 3.86 12.6c.49-1.92 1.92-3.56 3.77-4.22.42-.14.86-.23 1.3-.28v4.06c-.66.08-1.3.43-1.71.95-.5.69-.64 1.61-.36 2.44.29.8 1.05 1.39 1.91 1.43.89.07 1.77-.42 2.17-1.21.31-.56.39-1.22.38-1.85-.01-5.18-.01-10.36-.01-15.54z"/>
+  </svg>
+);
+
+const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 const contactSchema = zod.object({
   name: zod.string().min(2, { message: 'Name is required' }),
@@ -230,34 +263,63 @@ export default function TalkNowOverlay() {
                         </p>
                       </div>
 
-                      <div className="flex flex-col gap-3">
-                        {/* Email Button */}
-                        <a
-                          href={siteSettings.socialUrls.email}
-                          className="flex items-center justify-between w-full border border-gray-700 hover:bg-white hover:text-black transition-colors p-3 rounded-full text-xs font-display uppercase tracking-wider"
-                        >
-                          <span className="flex items-center gap-2">
-                            <Mail className="w-4 h-4" />
-                            EMAIL
-                          </span>
-                          <span className="text-[10px] text-gray-400 group-hover:text-black font-sans lowercase">
-                            hello@lfgentertainment.com
-                          </span>
-                        </a>
-
-                        {/* WhatsApp Button */}
+                      <div className="flex items-center gap-3 mt-4">
                         <a
                           href={siteSettings.socialUrls.whatsapp}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between w-full border border-gray-700 hover:bg-white hover:text-black transition-colors p-3 rounded-full text-xs font-display uppercase tracking-wider"
+                          className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                          aria-label="WhatsApp"
                         >
-                          <span className="flex items-center gap-2">
-                            <MessageSquare className="w-4 h-4" />
-                            WHATSAPP
-                          </span>
-                          <span className="text-[10px] text-gray-400">CONNECT</span>
+                          <WhatsappIcon className="w-5 h-5" />
                         </a>
+                        <a
+                          href={siteSettings.socialUrls.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                          aria-label="Instagram"
+                        >
+                          <InstagramIcon className="w-5 h-5" />
+                        </a>
+                        <a
+                          href={siteSettings.socialUrls.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                          aria-label="Facebook"
+                        >
+                          <FacebookIcon className="w-5 h-5" />
+                        </a>
+                        <a
+                          href={siteSettings.socialUrls.tiktok}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                          aria-label="TikTok"
+                        >
+                          <TiktokIcon className="w-5 h-5" />
+                        </a>
+                        <a
+                          href={siteSettings.socialUrls.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                          aria-label="YouTube"
+                        >
+                          <YoutubeIcon className="w-5 h-5" />
+                        </a>
+                        {siteSettings.socialUrls.linkedin && (
+                          <a
+                            href={siteSettings.socialUrls.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all bg-black/20 hover:bg-white/10"
+                            aria-label="LinkedIn"
+                          >
+                            <LinkedinIcon className="w-5 h-5" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>

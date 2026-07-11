@@ -93,6 +93,7 @@ export type SiteSettings = {
     tiktok: string;
     youtube: string;
     email: string;
+    linkedin?: string;
   };
   offices: OfficeAddress[];
 };

@@ -1,4 +1,5 @@
 import { Event, Testimonial, GalleryItem, SiteSettings, Artist } from './types';
+import mockGalleriesData from './galleries-data.json';
 
 export const siteSettings: SiteSettings = {
   socialUrls: {
@@ -8,6 +9,7 @@ export const siteSettings: SiteSettings = {
     tiktok: 'https://tiktok.com/@lfgentertainment',
     youtube: 'https://youtube.com/c/lfgentertainment',
     email: 'mailto:hello@lfgentertainment.com',
+    linkedin: 'https://linkedin.com/company/lfgentertainment',
   },
   offices: [
     {
@@ -55,7 +57,7 @@ const createLineup = (headlinerName: string): Artist[] => [
   {
     id: 'art-hl',
     name: headlinerName,
-    photoUrl: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop',
+    photoUrl: headlinerName === 'DJ Snake' ? '/images/djsnakeland.jpg' : 'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop',
     role: 'Headliner',
   },
   {
@@ -131,8 +133,8 @@ export const mockEvents: Event[] = [
       name: 'Port City Colombo',
       address: 'Port City waterfront, Colombo, Sri Lanka',
     },
-    posterImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop',
-    heroBanner: '/images/senter-music-festival-hero.jpg',
+    posterImage: '/images/senterfesthome.png',
+    heroBanner: '/images/1.png',
     shortDescription: "Sri Lanka's premier music festival — international headliners, homegrown talent, and a Halloween-weekend production unlike anything the island has seen.",
     fullDescription: "Senter Music Festival is Sri Lanka's premier music and entertainment experience, bringing together world-class performances, local talent, and unforgettable festival moments. Created by Senter Records, the festival celebrates music, culture, and creativity — a platform for Sri Lankan artists backed by international-standard production, immersive visuals, and full-scale EDM experiences. Top artists. Themed worlds. Premium hospitality. Senter Music Festival is the next generation of Sri Lankan entertainment — music lovers, creators, and communities on one iconic stage.",
     atmosphere: 'Two nights on the Port City waterfront. Halloween energy, festival scale. Pyro against the skyline, bass across the water, and a crowd that came to lose its voice.',
@@ -313,136 +315,52 @@ export const mockEvents: Event[] = [
 
 export const mockPastEvents = [
   {
-    slug: 'neon-night-bangkok',
-    title: 'Neon Night',
-    date: 'March 2025',
-    location: 'Bangkok, Thailand 🇹🇭',
-    oneLiner: 'The warehouse rave that started it all.',
-    coverImage: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop',
+    slug: 'yellow-claw-bali-2025',
+    title: 'YELLOW CLAW',
+    date: 'May 2025',
+    location: 'Atlas Beach Club, Bali, Indonesia',
+    oneLiner: 'Trap and bass royalty taking over Bali\'s premier beach club.',
+    coverImage: '/images/eventYellowclaw.jpg',
   },
   {
-    slug: 'summer-bash-2025-gold-coast',
-    title: 'Summer Bash 2025',
-    date: 'June 2025',
-    location: 'Gold Coast, Australia 🇦🇺',
-    oneLiner: 'Sunset to sunrise on the sand.',
-    coverImage: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600&auto=format&fit=crop',
+    slug: 'nepthya-kl-2025',
+    title: 'NEPTHYA',
+    date: 'July 2025',
+    location: 'ZEPP, Kuala Lumpur, Malaysia',
+    oneLiner: 'An immersive showcase of high-octane live metal and rock in KL.',
+    coverImage: '/images/eventNepathya.jpg',
   },
   {
-    slug: 'glow-festival-jakarta',
-    title: 'Glow Festival',
-    date: 'December 2025',
-    location: 'Jakarta, Indonesia 🇮🇩',
-    oneLiner: '10,000 lights. One unforgettable night.',
-    coverImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop',
+    slug: 'hbar-pres-alyphland-2025',
+    title: 'HBAR PRES. ALYPHLAND',
+    date: 'September 2025',
+    location: '',
+    oneLiner: 'An exclusive curated tech-art rave experience.',
+    coverImage: '/images/eventHbarPresAlyphland.jpg',
+  },
+  {
+    slug: 'sean-paul-bangkok-2025',
+    title: 'SEAN PAUL',
+    date: 'October 2025',
+    location: 'UOB Live, Bangkok, Thailand',
+    oneLiner: 'The dancehall legend live in the heart of Bangkok.',
+    coverImage: '/images/eventSeanPaul.jpg',
+  },
+  {
+    slug: 'sean-paul-kl-2025',
+    title: 'SEAN PAUL',
+    date: 'October 2025',
+    location: 'Idea Live Arena, Kuala Lumpur, Malaysia',
+    oneLiner: 'A sold-out arena showing of pure energy and dancehall classics.',
+    coverImage: '/images/eventSeanPaul2.jpg',
+  },
+  {
+    slug: 'king-promise-kl-2025',
+    title: 'KING PROMISE',
+    date: 'November 2025',
+    location: 'KYO, Kuala Lumpur, Malaysia',
+    oneLiner: 'Intimate afrobeat grooves and highlife vibes at KYO.',
+    coverImage: '/images/eventKingPromise.jpg',
   },
 ];
-
-export const mockGalleries: GalleryItem[] = [
-  {
-    eventSlug: 'neon-night-bangkok',
-    eventName: 'Neon Night',
-    year: 2025,
-    date: '15 March 2025',
-    venueName: 'The Warehouse District, Bangkok',
-    oneLiner: 'The warehouse rave that started it all.',
-    tags: ['rave', 'warehouse', 'neon'],
-    coverImage: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1200&auto=format&fit=crop',
-    media: [
-      {
-        id: 'nn1',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'landscape',
-        caption: 'The main stage drops deep house sets.',
-      },
-      {
-        id: 'nn2',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'portrait',
-        caption: 'Laser arrays scanning the crowds.',
-      },
-      {
-        id: 'nn3',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'square',
-        caption: 'Strict warehouse layouts, raw vibes.',
-      },
-      {
-        id: 'nn4',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'landscape',
-        caption: 'Intense energy from dawn to dusk.',
-      },
-    ],
-  },
-  {
-    eventSlug: 'summer-bash-2025-gold-coast',
-    eventName: 'Summer Bash 2025',
-    year: 2025,
-    date: '22 June 2025',
-    venueName: 'Surfers Paradise, Gold Coast',
-    oneLiner: 'Sunset to sunrise on the sand.',
-    tags: ['beach party', 'sunset', 'edm'],
-    coverImage: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200&auto=format&fit=crop',
-    media: [
-      {
-        id: 'sb1',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'landscape',
-        caption: 'Stages set right on the beach sands.',
-      },
-      {
-        id: 'sb2',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'portrait',
-        caption: 'Fire dancers setting the sunset ambiance.',
-      },
-      {
-        id: 'sb3',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'square',
-        caption: 'Festival lights reflecting off the waves.',
-      },
-    ],
-  },
-  {
-    eventSlug: 'glow-festival-jakarta',
-    eventName: 'Glow Festival',
-    year: 2025,
-    date: '12 December 2025',
-    venueName: 'Eco Park, Jakarta',
-    oneLiner: '10,000 lights. One unforgettable night.',
-    tags: ['glow', 'lights', 'strobe'],
-    coverImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop',
-    media: [
-      {
-        id: 'gf1',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'landscape',
-        caption: '10,000 glow sticks flashing in unity.',
-      },
-      {
-        id: 'gf2',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'portrait',
-        caption: 'Illuminated structures dotted across Eco Park.',
-      },
-      {
-        id: 'gf3',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
-        aspectRatio: 'square',
-        caption: 'The main pavilion at its peak glow state.',
-      },
-    ],
-  },
-];
+export const mockGalleries: GalleryItem[] = mockGalleriesData as GalleryItem[];

@@ -21,14 +21,17 @@ export default function Header() {
   const { openTickets } = useTicketsModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoVisible, setLogoVisible] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('lfg-preloader-visited') === 'true';
-    }
-    return false;
-  });
+  // Always start false so SSR and client initial render agree (no hydration mismatch).
+  const [logoVisible, setLogoVisible] = useState(false);
 
-  // Listen for preloader completion
+  // After hydration, check if the preloader has already run this session.
+  useEffect(() => {
+    if (sessionStorage.getItem('lfg-preloader-visited') === 'true') {
+      setLogoVisible(true);
+    }
+  }, []);
+
+  // Listen for preloader completion during this session.
   useEffect(() => {
     if (logoVisible) return;
     const onDone = () => setLogoVisible(true);
@@ -39,13 +42,8 @@ export default function Header() {
   // Monitor scroll height
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 40);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -63,75 +61,80 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={cn(
-          'fixed top-0 left-0 right-0 z-50 h-20 flex items-center justify-between px-6 md:px-12 transition-all duration-300',
-          isScrolled ? 'glass-nav h-16' : 'bg-transparent'
-        )}
-      >
-        {/* Logo — hidden until preloader wordmark lands on it */}
-        <Link
-          id="header-logo"
-          href="/"
-          className={cn(
-            "text-lg md:text-xl font-display font-black uppercase tracking-tighter text-white hover:opacity-80",
-            logoVisible ? "visible" : "invisible"
-          )}
-        >
-          LFG Entertainment
-        </Link>
+      {/*
+       * Desktop layout: three zones pinned to a shared top-4 row.
+       *   LEFT  — LFG Entertainment logo (outside frame)
+       *   CENTRE — floating pill with nav links (the frame)
+       *   RIGHT  — Talk Now + Buy Tickets buttons (outside frame)
+       */}
+      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+        <div className="relative w-full px-5 md:px-8 h-20 flex items-center">
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-display uppercase tracking-widest">
-          {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                scroll={false}
-                className={cn(
-                  'relative py-2 text-gray-400 hover:text-white transition-colors duration-200',
-                  isActive && 'text-white'
-                )}
-              >
-                {link.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="activeHeaderNav"
-                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-white"
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+          {/* LEFT — Logo */}
+          <Link
+            id="header-logo"
+            href="/"
+            className={cn(
+              'pointer-events-auto text-sm md:text-base font-display font-black uppercase tracking-tighter text-white hover:opacity-70 transition-opacity whitespace-nowrap',
+              logoVisible ? 'visible' : 'invisible'
+            )}
+          >
+            LFG Entertainment
+          </Link>
 
-        {/* Action CTAs */}
-        <div className="hidden md:flex items-center gap-4">
+          {/* CENTRE — Pill nav frame, absolutely centred */}
+          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 text-[10px] font-display uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.8)] p-1 rounded-full pointer-events-auto">
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  scroll={false}
+                  className={cn(
+                    'relative px-4 py-1.5 rounded-full transition-colors duration-300 font-bold',
+                    isActive ? 'text-black font-black' : 'text-white hover:text-white/80'
+                  )}
+                >
+                  <span className="relative z-10">{link.label}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeHeaderNav"
+                      className="absolute inset-0 bg-white rounded-full z-0"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* RIGHT — CTA buttons */}
+          <div className="hidden md:flex items-center gap-3 ml-auto pointer-events-auto">
+            <button
+              onClick={handleTalkNowClick}
+              className="px-5 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md hover:bg-white hover:text-black hover:border-white transition-all text-xs font-display uppercase tracking-wider text-white whitespace-nowrap"
+            >
+              Talk Now
+            </button>
+            <button
+              onClick={() => openTickets()}
+              className="px-5 py-2 rounded-full bg-white text-black hover:bg-white/90 hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] transition-all text-xs font-display font-bold uppercase tracking-wider cursor-pointer whitespace-nowrap"
+            >
+              Buy Tickets
+            </button>
+          </div>
+
+          {/* Mobile — hamburger (right side) */}
           <button
-            onClick={handleTalkNowClick}
-            className="px-5 py-2.5 rounded-full border border-gray-700 hover:bg-white hover:text-black hover:border-white transition-all text-xs font-display uppercase tracking-wider"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex md:hidden text-white p-2 focus:outline-none ml-auto pointer-events-auto"
+            aria-label="Toggle menu"
           >
-            Talk Now
-          </button>
-          <button
-            onClick={() => openTickets()}
-            className="px-5 py-2.5 rounded-full bg-white text-black hover:bg-white/95 hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] transition-all text-xs font-display font-bold uppercase tracking-wider cursor-pointer"
-          >
-            Buy Tickets
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex md:hidden text-white p-2 focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </header>
+      </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

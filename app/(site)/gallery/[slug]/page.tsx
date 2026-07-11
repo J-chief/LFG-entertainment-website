@@ -1,13 +1,13 @@
 'use client';
 
-import { use, useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { mockGalleries } from '@/lib/mock-data';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { ArrowRight, Calendar, MapPin, Maximize2 } from 'lucide-react';
+import { Calendar, MapPin, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function EventGalleryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -20,14 +20,43 @@ export default function EventGalleryPage({ params }: { params: Promise<{ slug: s
   const gallery = mockGalleries[galleryIndex];
   const [lightboxIndex, setLightboxIndex] = useState<number>(-1);
 
-  // Next gallery item in circular array
-  const nextGallery = mockGalleries[(galleryIndex + 1) % mockGalleries.length];
+  // Navigation gallery items in circular array
+  const totalCount = mockGalleries.length;
+  const prevGallery = mockGalleries[(galleryIndex - 1 + totalCount) % totalCount];
+  const nextGallery = mockGalleries[(galleryIndex + 1) % totalCount];
 
   // Map gallery media to Lightbox slides format
   const slides = gallery.media.map((item) => ({
     src: item.url,
     alt: item.caption || gallery.eventName,
   }));
+
+  // Resize Lenis when DOM updates or images load
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const resizeHandler = () => {
+      if ((window as any).lenis) {
+        (window as any).lenis.resize();
+      }
+    };
+
+    // Run initially
+    resizeHandler();
+
+    // Observe size changes of the document body (since images load and page size expands)
+    const observer = new ResizeObserver(() => {
+      resizeHandler();
+    });
+
+    if (document.body) {
+      observer.observe(document.body);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [gallery]);
 
   return (
     <div className="w-full bg-black text-white relative min-h-screen">
@@ -195,36 +224,75 @@ export default function EventGalleryPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* 4. FOOTER CONTINUOUS NAV */}
-      <section className="border-t border-gray-900 py-16 md:py-24 px-6 md:px-12 bg-black-pure text-white">
-        <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <span className="text-[10px] tracking-wide-accent text-gray-500 font-display uppercase block mb-4">
-            CONTINUOUS BROWSING
-          </span>
-          <Link
-            href={`/gallery/${nextGallery.eventSlug}`}
-            scroll={false}
-            className="group flex flex-col items-center text-center max-w-lg cursor-none-desktop"
-          >
-            <div className="relative w-48 h-32 rounded overflow-hidden border border-gray-900 group-hover:border-white transition-all duration-300 mb-6">
-              <Image
-                src={nextGallery.coverImage}
-                alt={nextGallery.eventName}
-                fill
-                sizes="192px"
-                className="object-cover img-grayscale group-hover:scale-105"
-              />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-display font-black uppercase text-white group-hover:underline flex items-center gap-2">
-              Next Event
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </h2>
-            <span className="text-xs font-sans text-gray-400 mt-2 uppercase tracking-wider">
-              {nextGallery.eventName} ({nextGallery.year})
+      {/* 3.5. MORE ARCHIVE CAPTURES */}
+      {gallery.media.length > 4 && (
+        <section className="px-6 md:px-12 max-w-6xl mx-auto pb-24 border-t border-gray-950 pt-16">
+          <div className="flex flex-col gap-2 mb-12">
+            <span className="text-[10px] tracking-wide-accent text-gray-500 font-display uppercase block">
+              (VISUAL ARCHIVE)
             </span>
-          </Link>
-        </div>
-      </section>
+            <h2 className="text-2xl md:text-3xl font-display font-black uppercase text-white">
+              More Captures
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {gallery.media.slice(4).map((item, idx) => {
+              const actualIdx = idx + 4;
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => setLightboxIndex(actualIdx)}
+                  className="group relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-gray-900 hover:border-gray-600 transition-all duration-300 cursor-pointer"
+                >
+                  <Image
+                    src={item.url}
+                    alt={item.caption || `${gallery.eventName} capture`}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover img-grayscale group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                    <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center">
+                      <Maximize2 className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+
+
+      {/* Side Navigation CTAs */}
+      <div className="fixed inset-y-0 left-0 right-0 pointer-events-none flex items-center justify-between px-4 md:px-8 z-40">
+        {/* Left CTA: Previous Event */}
+        <Link
+          href={`/gallery/${prevGallery.eventSlug}`}
+          scroll={false}
+          className="group pointer-events-auto flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 hover:border-white/30 text-white/50 hover:text-white p-3 md:p-4 rounded-full transition-all duration-300 hover:scale-105 hover:bg-black-pure shadow-[0_0_20px_rgba(0,0,0,0.5)] cursor-pointer"
+          aria-label={`Previous gallery: ${prevGallery.eventName}`}
+        >
+          <ChevronLeft className="w-5 h-5 md:w-6 h-6" />
+          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-[10px] tracking-widest uppercase font-display font-bold">
+            {prevGallery.eventName}
+          </span>
+        </Link>
+
+        {/* Right CTA: Next Event */}
+        <Link
+          href={`/gallery/${nextGallery.eventSlug}`}
+          scroll={false}
+          className="group pointer-events-auto flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 hover:border-white/30 text-white/50 hover:text-white p-3 md:p-4 rounded-full transition-all duration-300 hover:scale-105 hover:bg-black-pure shadow-[0_0_20px_rgba(0,0,0,0.5)] cursor-pointer"
+          aria-label={`Next gallery: ${nextGallery.eventName}`}
+        >
+          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-[10px] tracking-widest uppercase font-display font-bold order-first">
+            {nextGallery.eventName}
+          </span>
+          <ChevronRight className="w-5 h-5 md:w-6 h-6" />
+        </Link>
+      </div>
 
       {/* 5. LIGHTBOX COMPONENT */}
       <Lightbox

@@ -20,7 +20,7 @@ export default function EventsPage() {
   );
 
   return (
-    <div className="w-full bg-black min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto">
+    <div className="w-full min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto">
       {/* Page Hero */}
       <div className="border-b border-gray-900 pb-12 mb-20">
         <h1 className="text-4xl md:text-6xl font-display font-black tracking-tight uppercase mb-4">
@@ -50,6 +50,11 @@ export default function EventsPage() {
             );
             return (
               <TiltCard key={event.slug}>
+                <div
+                  className={`relative h-full ${
+                    event.slug === 'senter-music-festival-2026' ? 'senter-glow' : ''
+                  }`}
+                >
                 <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[480px]">
                 {/* Poster image */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden">
@@ -63,7 +68,9 @@ export default function EventsPage() {
                     alt={event.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover img-grayscale group-hover:scale-105"
+                    className={`object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      event.slug === 'senter-music-festival-2026' ? '' : 'img-grayscale'
+                    }`}
                   />
                 </div>
 
@@ -110,6 +117,7 @@ export default function EventsPage() {
                   </div>
                 </div>
               </div>
+              </div>
             </TiltCard>
             );
           })}
@@ -129,9 +137,9 @@ export default function EventsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {mockPastEvents.map((event) => (
-            <TiltCard key={event.slug}>
-              <div className="group relative flex flex-col bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300">
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <TiltCard key={event.slug} className="h-full">
+              <div className="group relative flex flex-col h-full bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300">
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src={event.coverImage}
                   alt={event.title}
@@ -140,10 +148,10 @@ export default function EventsPage() {
                   className="object-cover img-grayscale group-hover:scale-105"
                 />
               </div>
-              <div className="p-6 flex flex-col justify-between min-h-[160px]">
+              <div className="p-6 flex flex-col justify-between flex-1">
                 <div>
                   <span className="text-[9px] tracking-wide-accent font-display text-gray-500 uppercase block mb-1">
-                    {event.date} · {event.location}
+                    {event.date}{event.location ? ` · ${event.location}` : ''}
                   </span>
                   <h3 className="text-lg font-display font-bold uppercase tracking-tight mb-2">
                     {event.title}

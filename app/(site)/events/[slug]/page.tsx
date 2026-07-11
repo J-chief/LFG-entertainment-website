@@ -18,10 +18,10 @@ if (typeof window !== 'undefined') {
 
 // Masonry venue pictures from Unsplash
 const VENUE_IMAGES = [
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=400&auto=format&fit=crop',
+  '/images/2.png',
+  '/images/3.png',
+  '/images/4.png',
+  '/images/5.png',
 ];
 
 export default function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -41,6 +41,17 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
   // Derive soldOut state
   const isEventSoldOut = event.ticketTiers.every(
     (t) => t.quantitySold >= t.quantityTotal
+  );
+
+  // Senter Music Festival is shown in full color; all other events stay grayscale
+  const isSenter = event.slug === 'senter-music-festival-2026';
+
+  // Venue masonry frame — color for Senter, grayscale (reveal on hover) otherwise
+  const venueFrame = cn(
+    'rounded overflow-hidden transition-all duration-500',
+    isSenter
+      ? 'filter contrast-110 brightness-95'
+      : 'filter grayscale contrast-125 brightness-75 hover:grayscale-0'
   );
 
   // Parallax scroll-trigger for venue masonry
@@ -246,15 +257,32 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
 
           {/* Headliner Area */}
           {event.lineup.filter((a) => a.role === 'Headliner').map((headliner) => (
-            <div key={headliner.id} className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-gray-800 mb-12 group">
+            <div
+              key={headliner.id}
+              className={cn(
+                "relative w-full overflow-hidden rounded-lg border border-gray-800 mb-12 group",
+                // Senter's headliner card fits the image's natural aspect ratio;
+                // all other events keep the fixed 16:9 crop.
+                !isSenter && "aspect-[16/9]"
+              )}
+            >
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-10" />
-              <Image
-                src={headliner.photoUrl}
-                alt={headliner.name}
-                fill
-                sizes="(max-width: 1200px) 100vw, 1152px"
-                className="object-cover img-grayscale"
-              />
+              {isSenter ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={headliner.photoUrl}
+                  alt={headliner.name}
+                  className="block w-full h-auto object-cover"
+                />
+              ) : (
+                <Image
+                  src={headliner.photoUrl}
+                  alt={headliner.name}
+                  fill
+                  sizes="(max-width: 1200px) 100vw, 1152px"
+                  className="object-cover img-grayscale"
+                />
+              )}
               <div className="absolute bottom-8 left-8 z-20 flex flex-col gap-2">
                 <span className="px-3 py-1 bg-white text-black text-[9px] font-display font-bold uppercase tracking-widest rounded-full w-max">
                   HEADLINER
@@ -268,26 +296,37 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
 
           {/* Supporting Grid - 5x2 grid (10 cards) */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {event.lineup.filter((a) => a.role !== 'Headliner').slice(0, 10).map((artist) => (
-              <div key={artist.id} className="group relative aspect-[3/4] rounded-lg overflow-hidden border border-gray-900 hover:border-gray-600 transition-all duration-300">
-                <Image
-                  src={artist.photoUrl}
-                  alt={artist.name}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 20vw"
-                  className="object-cover img-grayscale group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute bottom-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <span className="text-[8px] tracking-widest font-display text-gray-400 uppercase block mb-1">
-                    {artist.role}
-                  </span>
-                  <h4 className="text-xs font-display font-bold uppercase text-white">
-                    {artist.name}
-                  </h4>
-                </div>
-              </div>
-            ))}
+            {isSenter
+              ? Array.from({ length: 10 }).map((_, i) => (
+                  <div
+                    key={`tba-${i}`}
+                    className="group relative aspect-[3/4] rounded-lg overflow-hidden border border-gray-900 bg-[#0F0F0F] flex items-center justify-center hover:border-gray-600 transition-all duration-300"
+                  >
+                    <span className="text-2xl font-display font-black uppercase tracking-widest text-gray-600">
+                      TBA
+                    </span>
+                  </div>
+                ))
+              : event.lineup.filter((a) => a.role !== 'Headliner').slice(0, 10).map((artist) => (
+                  <div key={artist.id} className="group relative aspect-[3/4] rounded-lg overflow-hidden border border-gray-900 hover:border-gray-600 transition-all duration-300">
+                    <Image
+                      src={artist.photoUrl}
+                      alt={artist.name}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 20vw"
+                      className="object-cover group-hover:scale-105 img-grayscale"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <div className="absolute bottom-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      <span className="text-[8px] tracking-widest font-display text-gray-400 uppercase block mb-1">
+                        {artist.role}
+                      </span>
+                      <h4 className="text-xs font-display font-bold uppercase text-white">
+                        {artist.name}
+                      </h4>
+                    </div>
+                  </div>
+                ))}
           </div>
         </div>
       </section>
@@ -434,7 +473,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
 
           {/* Right Parallax Masonry */}
           <div className="lg:col-span-7 grid grid-cols-12 gap-4">
-            <div className="col-span-7 relative aspect-[4/3] rounded overflow-hidden filter grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-500">
+            <div className={cn("col-span-7 relative aspect-[4/3]", venueFrame)}>
               <Image
                 src={VENUE_IMAGES[0]}
                 alt="Port City 1"
@@ -443,7 +482,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
                 className="venue-parallax object-cover"
               />
             </div>
-            <div className="col-span-5 relative aspect-[3/4] rounded overflow-hidden filter grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-500">
+            <div className={cn("col-span-5 relative aspect-[3/4]", venueFrame)}>
               <Image
                 src={VENUE_IMAGES[1]}
                 alt="Port City 2"
@@ -452,7 +491,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
                 className="venue-parallax object-cover"
               />
             </div>
-            <div className="col-span-5 relative aspect-[1] rounded overflow-hidden filter grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-500">
+            <div className={cn("col-span-5 relative aspect-[1]", venueFrame)}>
               <Image
                 src={VENUE_IMAGES[2]}
                 alt="Port City 3"
@@ -461,7 +500,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
                 className="venue-parallax object-cover"
               />
             </div>
-            <div className="col-span-7 relative aspect-[2] rounded overflow-hidden filter grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-500">
+            <div className={cn("col-span-7 relative aspect-[2]", venueFrame)}>
               <Image
                 src={VENUE_IMAGES[3]}
                 alt="Port City 4"

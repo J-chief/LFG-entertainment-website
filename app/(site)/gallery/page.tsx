@@ -19,7 +19,7 @@ export default function GalleryIndexPage() {
   const totalEventsCount = mockGalleries.length;
 
   return (
-    <div className="w-full bg-black min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto">
+    <div className="w-full min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto">
       {/* Intro Block */}
       <div className="border-b border-gray-950 pb-12 mb-16 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
         <div>
@@ -57,12 +57,12 @@ export default function GalleryIndexPage() {
                     data-cursor="view"
                   >
                     {/* Event image card */}
-                    <div className="relative aspect-[16/10] w-full md:w-80 shrink-0 overflow-hidden rounded border border-gray-900 group-hover:border-gray-600 transition-all duration-300">
+                    <div className="relative aspect-[4/5] w-full md:w-64 shrink-0 overflow-hidden rounded border border-gray-900 group-hover:border-gray-600 transition-all duration-300">
                       <Image
                         src={gallery.coverImage}
                         alt={gallery.eventName}
                         fill
-                        sizes="(max-width: 768px) 100vw, 320px"
+                        sizes="(max-width: 768px) 100vw, 256px"
                         className="object-cover img-grayscale group-hover:scale-105"
                       />
                     </div>

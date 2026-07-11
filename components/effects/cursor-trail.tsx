@@ -1,201 +1,113 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
-type Particle = {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  alpha: number;
-  life: number;
-  maxLife: number;
-};
+import fluidCursor from '@/hooks/use-FluidCursor';
 
 export default function CursorTrail() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0, lastX: 0, lastY: 0, speed: 0 });
-  const particlesRef = useRef<Particle[]>([]);
-  const isMovingRef = useRef(false);
-  const [cursorType, setCursorType] = useState<'default' | 'view'>('default');
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
+  const [cursorType, setCursorType] = useState<'default' | 'view'>('default');
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const dotCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const viewCircleRef = useRef<HTMLDivElement | null>(null);
+  const animIdRef = useRef<number | null>(null);
 
+  // Effect 1: detect mobile / reduced-motion. Runs once on mount.
   useEffect(() => {
-    // Detect mobile / touch devices
     const touchQuery = window.matchMedia('(pointer: coarse)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setIsMobile(touchQuery.matches || motionQuery.matches);
+  }, []);
 
-    if (touchQuery.matches || motionQuery.matches) {
-      setIsMobile(true);
-      return;
-    }
-    
-    setIsMobile(false);
-    setIsVisible(true);
+  // Effect 2: start the WebGL fluid sim AFTER isMobile is resolved and the
+  // canvas is committed to the DOM. Only runs when isMobile turns false.
+  useEffect(() => {
+    if (isMobile) return;
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    // At this point <canvas id="fluid"> is in the DOM.
+    fluidCursor();
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Mouse movement listener
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
-      isMovingRef.current = true;
-      
-      const dx = mouseRef.current.x - mouseRef.current.lastX;
-      const dy = mouseRef.current.y - mouseRef.current.lastY;
-      mouseRef.current.speed = Math.sqrt(dx * dx + dy * dy);
-      
-      mouseRef.current.lastX = mouseRef.current.x;
-      mouseRef.current.lastY = mouseRef.current.y;
-    };
-
-    // Mouse entry/exit listeners
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-
-    // Cursor type listeners (delegated)
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const viewElement = target.closest('[data-cursor="view"]');
-      if (viewElement) {
-        setCursorType('view');
-      } else {
-        setCursorType('default');
-      }
+      setCursorType(viewElement ? 'view' : 'default');
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('mouseover', handleMouseOver);
-
-    // Particles loop
-    let animationId: number;
-    
-    const spawnParticles = (x: number, y: number, count: number) => {
-      for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        // Speeds are slow/drifting
-        const velocity = Math.random() * 1.5 + 0.2;
-        const maxLife = Math.random() * 30 + 20; // life in frames
-        
-        particlesRef.current.push({
-          x,
-          y,
-          vx: Math.cos(angle) * velocity + (Math.random() - 0.5) * 0.5,
-          vy: Math.sin(angle) * velocity + 0.3, // slow downward gravity drift
-          size: Math.random() * 2 + 1,
-          alpha: 1,
-          life: maxLife,
-          maxLife,
-        });
-      }
+    return () => {
+      window.removeEventListener('mouseover', handleMouseOver);
     };
+  }, [isMobile]);
 
-    const updateAndRender = () => {
+  // Effect 3: overlay canvas for the custom pointer shape (arrow / VIEW circle).
+  useEffect(() => {
+    if (isMobile) return;
+
+    const canvas = dotCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Spawn particles based on mouse movement speed
-      if (isVisible && isMovingRef.current) {
-        const count = Math.min(3, Math.floor(mouseRef.current.speed / 5) + 1);
-        spawnParticles(mouseRef.current.x, mouseRef.current.y, count);
-        isMovingRef.current = false;
-      }
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
 
-      // Update & Draw particles
-      const particles = particlesRef.current;
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life--;
-        p.alpha = p.life / p.maxLife;
-
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-          continue;
+      if (cursorType === 'view') {
+        // The VIEW circle is a DOM element (see viewCircleRef) so it can use
+        // mix-blend-mode: difference to show the negative of the image behind it.
+        // Here we just track the pointer position.
+        if (viewCircleRef.current) {
+          viewCircleRef.current.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
         }
-
-        // Draw particle (silver dust effect)
+      } else {
+        // White mouse-arrow pointer
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        
-        // Gradient color for particle (silver-white)
-        const alphaStr = p.alpha.toFixed(2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alphaStr})`;
-        ctx.shadowColor = `rgba(192, 192, 192, ${alphaStr})`;
-        ctx.shadowBlur = 4;
+        ctx.moveTo(mx, my);
+        ctx.lineTo(mx, my + 18);
+        ctx.lineTo(mx + 4.5, my + 13);
+        ctx.lineTo(mx + 8.5, my + 22);
+        ctx.lineTo(mx + 11.5, my + 20.5);
+        ctx.lineTo(mx + 7.5, my + 11.5);
+        ctx.lineTo(mx + 13, my + 11.5);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
         ctx.fill();
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.85)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
       }
 
-      // Reset shadow for subsequent draws
-      ctx.shadowBlur = 0;
-
-      // Render custom primary pointer (main ring/dot)
-      if (isVisible) {
-        ctx.beginPath();
-        if (cursorType === 'view') {
-          // Large silver VIEW circle
-          ctx.arc(mouseRef.current.x, mouseRef.current.y, 45, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-          ctx.fill();
-
-          ctx.font = 'bold 11px var(--font-space-grotesk), sans-serif';
-          ctx.fillStyle = '#0A0A0A';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText('VIEW', mouseRef.current.x, mouseRef.current.y);
-        } else {
-          // Small sleek ring + centered dot
-          // Outline circle
-          ctx.arc(mouseRef.current.x, mouseRef.current.y, 10, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          // Centered solid dot
-          ctx.beginPath();
-          ctx.arc(mouseRef.current.x, mouseRef.current.y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-          ctx.fill();
-        }
-      }
-
-      animationId = requestAnimationFrame(updateAndRender);
+      animIdRef.current = requestAnimationFrame(draw);
     };
 
-    updateAndRender();
+    draw();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('mouseover', handleMouseOver);
-      cancelAnimationFrame(animationId);
+      if (animIdRef.current != null) cancelAnimationFrame(animIdRef.current);
     };
-  }, [isVisible, cursorType]);
+  }, [isMobile, cursorType]);
 
   if (isMobile) return null;
 
   return (
     <>
       <style jsx global>{`
-        /* Hide native cursor on desktop to support the canvas pointer */
         @media (min-width: 1024px) {
           body,
           a,
@@ -208,11 +120,34 @@ export default function CursorTrail() {
           }
         }
       `}</style>
+
+      {/* WebGL fluid simulation canvas */}
+      <div className="fixed top-0 left-0 z-[9990] pointer-events-none">
+        <canvas id="fluid" className="w-screen h-screen" />
+      </div>
+
+      {/* Overlay canvas for custom pointer shape (default arrow) */}
       <canvas
-        ref={canvasRef}
+        ref={dotCanvasRef}
         className="fixed inset-0 pointer-events-none z-[9999]"
-        style={{ mixBlendMode: 'difference' }}
       />
+
+      {/* VIEW circle — mix-blend-difference shows the negative of the
+          image/content behind it. Positioned via JS in the RAF loop. */}
+      <div
+        ref={viewCircleRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-[76px] h-[76px] rounded-full flex items-center justify-center will-change-transform"
+        style={{
+          backgroundColor: '#ffffff',
+          mixBlendMode: 'difference',
+          opacity: cursorType === 'view' ? 1 : 0,
+          transition: 'opacity 0.2s ease',
+        }}
+      >
+        <span className="font-display font-bold text-[11px] tracking-widest text-black">
+          VIEW
+        </span>
+      </div>
     </>
   );
 }

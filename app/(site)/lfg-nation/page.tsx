@@ -25,8 +25,8 @@ export default function LfgNationPage() {
   };
 
   return (
-    <div className="w-full bg-black min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto relative overflow-hidden">
-      
+    <div className="w-full min-h-screen text-white py-20 px-6 md:px-12 max-w-6xl mx-auto relative overflow-hidden">
+
       {/* Background Soft Blurred Orbs */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-white/2 rounded-full blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-white/3 rounded-full blur-[150px] pointer-events-none z-0" />
@@ -194,7 +194,9 @@ export default function LfgNationPage() {
                         alt={event.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover img-grayscale group-hover:scale-105"
+                        className={`object-cover group-hover:scale-105 ${
+                          event.slug === 'senter-music-festival-2026' ? '' : 'img-grayscale'
+                        }`}
                       />
                     </div>
                     

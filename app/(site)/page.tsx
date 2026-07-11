@@ -32,7 +32,6 @@ const MOSAIC_IMAGES = [
   "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=500&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1493676304819-0d7a77d26ef0?q=80&w=500&auto=format&fit=crop",
 ];
 
 // Grid layout: [colSpan, rowSpan] for each image in a 6-col grid
@@ -47,7 +46,6 @@ const MOSAIC_GRID: [number, number][] = [
   [1, 2], // 7 — tall
   [1, 1], // 8 — small
   [2, 1], // 9 — wide
-  [1, 1], // 10 — small
 ];
 
 export default function HomePage() {

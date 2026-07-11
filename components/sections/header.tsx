@@ -76,7 +76,9 @@ export default function Header() {
             href="/"
             className={cn(
               'pointer-events-auto text-sm md:text-base font-display font-black uppercase tracking-tighter text-white hover:opacity-70 transition-opacity whitespace-nowrap',
-              logoVisible ? 'visible' : 'invisible'
+              logoVisible ? 'visible' : 'invisible',
+              // On mobile, fade the logo out once scrolled; keep it visible on desktop.
+              isScrolled && 'opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto'
             )}
           >
             LFG Entertainment

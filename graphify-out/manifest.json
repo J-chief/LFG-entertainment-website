@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "app/(site)/events/[slug]/page.tsx": {
-    "mtime": 1783840241.6885467,
-    "ast_hash": "95b81cd260af1ae7a7c5ba78b8b5d52c",
+    "mtime": 1783840860.9192975,
+    "ast_hash": "28dbd9521649897080a5311d4fd71cfc",
     "semantic_hash": ""
   },
   "app/(site)/events/page.tsx": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1783839463.7191868,
-    "ast_hash": "377dd44b3b91a2e9d96f6a14fcf2a7fe",
+    "mtime": 1783841369.9074185,
+    "ast_hash": "bce3ec19323f3f359ddec42f4889b045",
     "semantic_hash": ""
   },
   "components/effects/cursor-tubes-client.tsx": {
@@ -2630,8 +2630,8 @@
     "semantic_hash": ""
   },
   "components/effects/granite-background.tsx": {
-    "mtime": 1783806055.0828574,
-    "ast_hash": "51309d4e9491196c1668bfca6e0088ec",
+    "mtime": 1783840677.4255733,
+    "ast_hash": "5c7dbec9b9751a313531061017d2e2a9",
     "semantic_hash": ""
   },
   "components/effects/hero-flame.tsx": {

@@ -2,12 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 
-// Routes that get the shiny deep-black granite backdrop. Events is flipped
-// vertically (scaleY(-1)). Rendered from the layout (outside the page-transition transform) so the
-// background stays fixed to the viewport and never shifts during navigation.
+// Routes that get the shiny deep-black granite backdrop. Rendered from the
+// layout (outside the page-transition transform) so the background stays fixed
+// to the viewport and never shifts during navigation.
 const GRANITE_ROUTES: Record<string, string> = {
   '/gallery': 'bg-granite',
-  '/events': 'bg-granite -scale-y-100',
+  '/events': 'bg-granite',
   '/lfg-nation': 'bg-granite',
 };
 

@@ -342,14 +342,14 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
 
         <div className="max-w-3xl mx-auto flex flex-col">
           {event.schedule.map((item, idx) => (
-            <div key={idx} className="flex justify-between items-center py-6 border-b border-gray-900 group hover:bg-white/5 px-4 transition-colors">
-              <span className="text-sm font-display font-black text-gray-400 group-hover:text-white transition-colors">
+            <div key={idx} className="grid grid-cols-[4rem_1fr_auto] md:grid-cols-[6rem_1fr_auto] items-center gap-3 md:gap-6 py-6 border-b border-gray-900 group hover:bg-white/5 px-4 transition-colors">
+              <span className="text-xs md:text-sm font-display font-black text-gray-400 group-hover:text-white transition-colors whitespace-nowrap">
                 {item.time}
               </span>
-              <span className="text-lg font-display font-bold uppercase text-white">
+              <span className="text-base md:text-lg font-display font-bold uppercase text-white">
                 {item.act}
               </span>
-              <span className="text-[10px] tracking-wide-accent font-display text-gray-500 uppercase">
+              <span className="text-[10px] tracking-wide-accent font-display text-gray-500 uppercase text-right whitespace-nowrap">
                 {item.stage || '—'}
               </span>
             </div>

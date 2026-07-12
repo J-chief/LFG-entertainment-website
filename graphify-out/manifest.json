@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "app/(site)/events/[slug]/page.tsx": {
-    "mtime": 1783837817.3592076,
-    "ast_hash": "f62c8bb12f65665afd6ec7ede6d20b8f",
+    "mtime": 1783840241.6885467,
+    "ast_hash": "95b81cd260af1ae7a7c5ba78b8b5d52c",
     "semantic_hash": ""
   },
   "app/(site)/events/page.tsx": {

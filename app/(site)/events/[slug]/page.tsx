@@ -136,9 +136,9 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* Dynamic alignment grid container */}
-        <div className="relative z-20 w-full h-full px-5 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12 mt-32">
+        <div className="relative z-20 w-full h-full px-5 md:px-8 flex flex-col md:flex-row items-center md:items-center justify-end md:justify-between gap-8 md:gap-12 mt-32">
           {/* Left Middle: title + description */}
-          <div className="flex flex-col items-start text-left gap-4 md:gap-6 max-w-2xl w-full">
+          <div className="flex flex-col items-center text-center md:items-start md:text-left gap-4 md:gap-6 max-w-2xl w-full">
             {isEventSoldOut && (
               <span className="px-3 py-1 rounded bg-red-600 text-white text-[9px] font-display font-bold uppercase tracking-wider mb-2">
                 EVENT SOLD OUT
@@ -153,9 +153,9 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
           </div>
 
           {/* Right Middle: date + location glassbox */}
-          <div className="w-auto max-w-xs md:max-w-sm shrink-0 self-end md:self-auto flex flex-col justify-center">
-            <div className="glass-card p-5 md:p-8 rounded-2xl flex flex-col gap-5 md:gap-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
-              <div className="flex flex-col gap-3 md:gap-4 text-xs md:text-sm text-gray-300">
+          <div className="w-auto max-w-xs md:max-w-sm shrink-0 self-center md:self-auto flex flex-col justify-center">
+            <div className="p-0 md:p-8 rounded-2xl flex flex-col gap-0 md:gap-6 md:glass-card md:shadow-[0_0_30px_rgba(0,0,0,0.5)] md:border md:border-white/10 md:backdrop-blur-2xl">
+              <div className="hidden md:flex flex-col gap-3 md:gap-4 text-xs md:text-sm text-gray-300">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                     <Calendar className="w-4 h-4 text-white" />
@@ -192,7 +192,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
                   if (isEventSoldOut) e.preventDefault();
                   else openTickets(event.slug);
                 }}
-                className={`w-full py-4 mt-2 rounded-full text-center text-sm font-display font-black uppercase tracking-widest transition-all ${
+                className={`px-8 py-2.5 mt-0 md:mt-2 md:w-full md:px-0 md:py-4 rounded-full text-center text-xs md:text-sm font-display font-black uppercase tracking-widest transition-all ${
                   isEventSoldOut
                     ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
                     : 'bg-white text-black hover:bg-white/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] cursor-pointer'

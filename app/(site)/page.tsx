@@ -526,11 +526,11 @@ export default function HomePage() {
               <TiltCard key={event.slug} className="shrink-0 basis-full md:basis-auto">
                 <div
                   className={cn(
-                    'relative h-full',
+                    'relative h-full max-w-[66%] mx-auto md:max-w-none md:mx-0',
                     event.slug === 'senter-music-festival-2026' && 'senter-glow',
                   )}
                 >
-                <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[480px]">
+                <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[320px] md:min-h-[480px]">
                   {/* Poster Container */}
                   <div className="relative aspect-[9/16] w-full overflow-hidden">
                     {isSoldOut && (

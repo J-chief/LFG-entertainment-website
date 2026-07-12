@@ -302,28 +302,28 @@ export default function HomePage() {
         {/* Centered stack content */}
         <div className="relative z-20 flex-1 flex flex-col items-center justify-end w-full max-w-4xl mx-auto px-6 pt-10 pb-6">
           {/* Meta row badges */}
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-3">
             <span className="px-3 py-1 rounded-full border border-white/20 bg-white/5 text-[9px] font-display tracking-[0.25em] uppercase">
               NEXT MAJOR EVENT
             </span>
-            <span className="flex items-center gap-1 text-xs text-gray-400">
+            <span className="flex items-center gap-1 text-[11px] md:text-xs text-gray-400">
               <MapPin className="w-3.5 h-3.5" />
               {featuredEvent.venue.name}
             </span>
           </div>
 
           {/* Event Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-[4rem] font-display font-black leading-none uppercase tracking-tighter mb-3 max-w-3xl">
+          <h1 className="text-2xl sm:text-5xl md:text-[4rem] font-display font-black leading-none uppercase tracking-tighter mb-2 md:mb-3 max-w-3xl">
             {featuredEvent.title}
           </h1>
 
           {/* Short description */}
-          <p className="relative z-30 text-sm md:text-base text-gray-300 w-full max-w-[65ch] mx-auto mb-6 font-sans leading-relaxed">
+          <p className="relative z-30 text-xs md:text-base text-gray-300 w-full max-w-[60ch] md:max-w-[65ch] mx-auto mb-4 md:mb-6 font-sans leading-relaxed">
             {featuredEvent.shortDescription}
           </p>
 
           {/* Countdown Clock */}
-          <div className="mb-6 w-full">
+          <div className="mb-4 md:mb-6 w-full">
             <CountdownTimer targetDate={featuredEvent.startDate} />
           </div>
 

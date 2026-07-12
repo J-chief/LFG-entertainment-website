@@ -46,16 +46,16 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   }, [targetDate]);
 
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 font-display">
+    <div className="flex items-center justify-center gap-1.5 sm:gap-4 md:gap-8 font-display">
       {/* Days */}
       <CountdownSegment value={timeLeft.days} label="DAYS" />
-      <span className="text-2xl sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
+      <span className="text-lg sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
       {/* Hours */}
       <CountdownSegment value={timeLeft.hours} label="HOURS" />
-      <span className="text-2xl sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
+      <span className="text-lg sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
       {/* Mins */}
       <CountdownSegment value={timeLeft.minutes} label="MINS" />
-      <span className="text-2xl sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
+      <span className="text-lg sm:text-3xl md:text-5xl font-black text-white/40 -translate-y-2">:</span>
       {/* Secs */}
       <CountdownSegment value={timeLeft.seconds} label="SECS" />
     </div>
@@ -66,7 +66,7 @@ function CountdownSegment({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-center">
       {/* Digits row */}
-      <div className="flex overflow-hidden h-12 sm:h-14 md:h-20 items-center justify-center">
+      <div className="flex overflow-hidden h-9 sm:h-14 md:h-20 items-center justify-center">
         {value.split('').map((char, index) => (
           <Digit key={`${index}-${char}`} char={char} />
         ))}
@@ -80,7 +80,7 @@ function CountdownSegment({ value, label }: { value: string; label: string }) {
 
 function Digit({ char }: { char: string }) {
   return (
-    <div className="relative w-6 sm:w-8 md:w-12 h-12 sm:h-14 md:h-20 flex items-center justify-center">
+    <div className="relative w-4 sm:w-8 md:w-12 h-9 sm:h-14 md:h-20 flex items-center justify-center">
       <AnimatePresence mode="popLayout">
         <motion.span
           key={char}
@@ -88,7 +88,7 @@ function Digit({ char }: { char: string }) {
           animate={{ y: '0%', opacity: 1 }}
           exit={{ y: '-80%', opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute text-3xl sm:text-4xl md:text-6xl font-black text-white"
+          className="absolute text-2xl sm:text-4xl md:text-6xl font-black text-white"
         >
           {char}
         </motion.span>

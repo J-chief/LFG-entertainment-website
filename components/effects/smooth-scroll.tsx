@@ -42,7 +42,9 @@ export default function SmoothScrollProvider({
     });
 
     lenisRef.current = lenis;
-    (window as any).lenis = lenis;
+    // Expose the instance for components that need to resize/scroll it.
+    // (Lenis ships its own `window.lenis` metadata typing, so cast around it.)
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     // ── Correct Lenis ↔ GSAP integration ─────────────────────────────────
     // 1. Drive Lenis from GSAP's ticker (shared rAF loop, no drift).
@@ -73,10 +75,9 @@ export default function SmoothScrollProvider({
     }
     window.scrollTo(0, 0);
 
-    let r1: number;
     let r2: number;
 
-    r1 = requestAnimationFrame(() => {
+    const r1 = requestAnimationFrame(() => {
       lenisRef.current?.scrollTo(0, { immediate: true });
       window.scrollTo(0, 0);
 

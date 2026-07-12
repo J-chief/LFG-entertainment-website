@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "app/(site)/events/[slug]/page.tsx": {
-    "mtime": 1783840860.9192975,
-    "ast_hash": "28dbd9521649897080a5311d4fd71cfc",
+    "mtime": 1783842763.4512348,
+    "ast_hash": "08ef9187c74ce8bcb8bb97e94b5d4764",
     "semantic_hash": ""
   },
   "app/(site)/events/page.tsx": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "app/(site)/gallery/[slug]/page.tsx": {
-    "mtime": 1783794888.2359269,
-    "ast_hash": "59851540776c3f6bf613f2220e17f447",
+    "mtime": 1783843354.6059346,
+    "ast_hash": "ede037afccf3e1a024656a181ce51eb7",
     "semantic_hash": ""
   },
   "app/(site)/gallery/page.tsx": {
@@ -60,13 +60,13 @@
     "semantic_hash": ""
   },
   "app/(site)/lfg-nation/page.tsx": {
-    "mtime": 1783806224.1086884,
-    "ast_hash": "faa573fe825598c1f843c9d4dbdbcb36",
+    "mtime": 1783842858.8402371,
+    "ast_hash": "1624cd2e043701afc1b319eea28b5903",
     "semantic_hash": ""
   },
   "app/(site)/page.tsx": {
-    "mtime": 1783839374.9820302,
-    "ast_hash": "b0c433943e705cf9b363ca909328de7a",
+    "mtime": 1783843340.0272942,
+    "ast_hash": "819bd61b0c2e996dc2ed1cc2097f5110",
     "semantic_hash": ""
   },
   "app/layout.tsx": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "components/effects/smooth-scroll.tsx": {
-    "mtime": 1783799820.6657395,
-    "ast_hash": "f6d58df8871a8535a3b065a84e4f6c8c",
+    "mtime": 1783843320.8400924,
+    "ast_hash": "b03ed97d42de9055eb5acd4702ef874e",
     "semantic_hash": ""
   },
   "components/sections/footer.tsx": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1783799013.6600604,
-    "ast_hash": "91811b7ff1c7b428a09319c65f9c97b3",
+    "mtime": 1783842219.9682848,
+    "ast_hash": "45bfe30e95bf4a09580c7c74595d3123",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -174,39 +174,14 @@
     "ast_hash": "c3dd7262847d512cf502a50accad8a9e",
     "semantic_hash": ""
   },
-  "public/file.svg": {
-    "mtime": 1783672975.9803865,
-    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
-    "semantic_hash": ""
-  },
-  "public/globe.svg": {
-    "mtime": 1783672975.9831278,
-    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
-    "semantic_hash": ""
-  },
-  "public/next.svg": {
-    "mtime": 1783672975.9831278,
-    "ast_hash": "8e061864f388b47f33a1c3780831193e",
-    "semantic_hash": ""
-  },
-  "public/vercel.svg": {
-    "mtime": 1783672975.9831278,
-    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
-    "semantic_hash": ""
-  },
-  "public/window.svg": {
-    "mtime": 1783672975.9831278,
-    "ast_hash": "a2760511c65806022ad20adf74370ff3",
-    "semantic_hash": ""
-  },
   "app/(site)/template.tsx": {
-    "mtime": 1783807767.86241,
-    "ast_hash": "1d5c778b02219fba30de0769a4bdfaea",
+    "mtime": 1783843371.0286202,
+    "ast_hash": "842d8d486a719e47498d4384ff1a350a",
     "semantic_hash": ""
   },
   "components/sections/tickets-overlay.tsx": {
-    "mtime": 1783676995.7166317,
-    "ast_hash": "29c170e5cf76ec5c2723817cd5763a75",
+    "mtime": 1783842826.2198944,
+    "ast_hash": "7c2d68c9158e80b8aafc45f87732d7bc",
     "semantic_hash": ""
   },
   "components/ui/tilt-card.tsx": {
@@ -244,11 +219,6 @@
     "ast_hash": "2dfcbeb516b15f72c2a4c0ce53567d4e",
     "semantic_hash": ""
   },
-  "public/images/senter-music-festival-hero.jpg": {
-    "mtime": 1783679172.8370388,
-    "ast_hash": "510eb6d424671ee25bb223adc2a0a394",
-    "semantic_hash": ""
-  },
   "public/images/eventKingPromise.jpg": {
     "mtime": 1783791339.6014202,
     "ast_hash": "337078d6f015e60bdcb3a6f862063553",
@@ -272,11 +242,6 @@
   "public/images/eventYellowclaw.jpg": {
     "mtime": 1783791214.1636565,
     "ast_hash": "af9fbc6b20b5108bae13fbf6e412e1c5",
-    "semantic_hash": ""
-  },
-  "public/images/1-scaled.jpg": {
-    "mtime": 1783792479.6720386,
-    "ast_hash": "7b80679538ce143837b9e1010b3fe7ed",
     "semantic_hash": ""
   },
   "public/images/HBar pres. Alyphland/2-scaled.jpg": {
@@ -2610,18 +2575,8 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1783841369.9074185,
-    "ast_hash": "bce3ec19323f3f359ddec42f4889b045",
-    "semantic_hash": ""
-  },
-  "components/effects/cursor-tubes-client.tsx": {
-    "mtime": 1783799371.61291,
-    "ast_hash": "ce37986fb73937f583bd87be2488157c",
-    "semantic_hash": ""
-  },
-  "components/effects/cursor-tubes.tsx": {
-    "mtime": 1783799345.4576287,
-    "ast_hash": "aa4ecb3099382dd1713b5a2da2b0a6f0",
+    "mtime": 1783843655.2686746,
+    "ast_hash": "5aa660588362b6dd455302d3a7443885",
     "semantic_hash": ""
   },
   "hooks/use-FluidCursor.ts": {
@@ -2642,11 +2597,6 @@
   "components/effects/page-bg-video.tsx": {
     "mtime": 1783803477.528068,
     "ast_hash": "d7c06270732d917edd5d18db1cc5a341",
-    "semantic_hash": ""
-  },
-  "components/effects/page-glow.tsx": {
-    "mtime": 1783801533.908253,
-    "ast_hash": "9f98a591f54b36d250ce686691a8a2a7",
     "semantic_hash": ""
   },
   "public/images/djsnakeland.jpg": {

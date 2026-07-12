@@ -25,13 +25,13 @@
     "semantic_hash": ""
   },
   "app/(site)/events/[slug]/page.tsx": {
-    "mtime": 1783790264.8500867,
-    "ast_hash": "db6dc30d05a2eb4f0fbd046f88b1fc03",
+    "mtime": 1783840860.9192975,
+    "ast_hash": "28dbd9521649897080a5311d4fd71cfc",
     "semantic_hash": ""
   },
   "app/(site)/events/page.tsx": {
-    "mtime": 1783798218.6085098,
-    "ast_hash": "e0ad9a05ae59de8477cf91cddf3ff7cd",
+    "mtime": 1783805951.2979493,
+    "ast_hash": "8f57d8eed687c5fccef9b431d1b5d615",
     "semantic_hash": ""
   },
   "app/(site)/gallery/[slug]/page.tsx": {
@@ -40,13 +40,13 @@
     "semantic_hash": ""
   },
   "app/(site)/gallery/page.tsx": {
-    "mtime": 1783792068.7672112,
-    "ast_hash": "068fcabb6790c217d20f906829f4b260",
+    "mtime": 1783805635.719375,
+    "ast_hash": "1fed9dd55c797a527e0a4d9c818b628c",
     "semantic_hash": ""
   },
   "app/(site)/layout.tsx": {
-    "mtime": 1783673182.681991,
-    "ast_hash": "a9594d0c565cdcff24f313b0af39847c",
+    "mtime": 1783807760.4503298,
+    "ast_hash": "c83d0c9f40d6677963b0579556f91ddd",
     "semantic_hash": ""
   },
   "app/(site)/legal/privacy/page.tsx": {
@@ -60,13 +60,13 @@
     "semantic_hash": ""
   },
   "app/(site)/lfg-nation/page.tsx": {
-    "mtime": 1783675757.7258515,
-    "ast_hash": "9e7d028e1a035ae3f0c2897cb7fc4ff5",
+    "mtime": 1783806224.1086884,
+    "ast_hash": "faa573fe825598c1f843c9d4dbdbcb36",
     "semantic_hash": ""
   },
   "app/(site)/page.tsx": {
-    "mtime": 1783799838.6279328,
-    "ast_hash": "ba5aa46f315580fb27c2b79abac35729",
+    "mtime": 1783839374.9820302,
+    "ast_hash": "b0c433943e705cf9b363ca909328de7a",
     "semantic_hash": ""
   },
   "app/layout.tsx": {
@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "components/effects/cursor-trail.tsx": {
-    "mtime": 1783799487.7611592,
-    "ast_hash": "54a45a0ddf151fea5b8a341110085c1c",
+    "mtime": 1783801038.6473532,
+    "ast_hash": "ba704c1438867cc243523ce3fff6228f",
     "semantic_hash": ""
   },
   "components/effects/page-transition.tsx": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "components/sections/header.tsx": {
-    "mtime": 1783799158.0916138,
-    "ast_hash": "8c83255cfec9731b5dd7ad031afa3b63",
+    "mtime": 1783810548.7832203,
+    "ast_hash": "742b84fafccf37f2c455fe13af78b322",
     "semantic_hash": ""
   },
   "components/sections/talk-now-overlay.tsx": {
@@ -115,8 +115,8 @@
     "semantic_hash": ""
   },
   "components/ui/countdown-timer.tsx": {
-    "mtime": 1783673154.5978189,
-    "ast_hash": "384da32928d94264b57006e642c387ab",
+    "mtime": 1783838838.0310168,
+    "ast_hash": "ac765f04df6a9183504e0aa0e61f7842",
     "semantic_hash": ""
   },
   "eslint.config.mjs": {
@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "lib/mock-data.ts": {
-    "mtime": 1783796878.0630927,
-    "ast_hash": "b9612d7c66522ae91bf069dcf73be70a",
+    "mtime": 1783806843.6193988,
+    "ast_hash": "d1615e878921c415decffbe2460da60e",
     "semantic_hash": ""
   },
   "lib/types.ts": {
@@ -200,7 +200,7 @@
     "semantic_hash": ""
   },
   "app/(site)/template.tsx": {
-    "mtime": 1783677984.6837177,
+    "mtime": 1783807767.86241,
     "ast_hash": "1d5c778b02219fba30de0769a4bdfaea",
     "semantic_hash": ""
   },
@@ -220,8 +220,8 @@
     "semantic_hash": ""
   },
   "public/images/1.png": {
-    "mtime": 1783789600.0,
-    "ast_hash": "972919360c25bff3d2273c0333fbac6e",
+    "mtime": 1783836889.5108519,
+    "ast_hash": "e3a38851565183320c76e69ea5615c75",
     "semantic_hash": ""
   },
   "public/images/2.png": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1783800475.3787808,
-    "ast_hash": "d17fc12f683d081e52d2c9b7177c41b2",
+    "mtime": 1783841369.9074185,
+    "ast_hash": "bce3ec19323f3f359ddec42f4889b045",
     "semantic_hash": ""
   },
   "components/effects/cursor-tubes-client.tsx": {
@@ -2625,8 +2625,43 @@
     "semantic_hash": ""
   },
   "hooks/use-FluidCursor.ts": {
-    "mtime": 1783798390.3803573,
-    "ast_hash": "7cc257723d88e286436ee2cbc940ef60",
+    "mtime": 1783801199.827572,
+    "ast_hash": "47ee9a61e483b61f49d13232dc465689",
+    "semantic_hash": ""
+  },
+  "components/effects/granite-background.tsx": {
+    "mtime": 1783840677.4255733,
+    "ast_hash": "5c7dbec9b9751a313531061017d2e2a9",
+    "semantic_hash": ""
+  },
+  "components/effects/hero-flame.tsx": {
+    "mtime": 1783801348.164922,
+    "ast_hash": "d27e10e1f1474f2da269a0a66a169f83",
+    "semantic_hash": ""
+  },
+  "components/effects/page-bg-video.tsx": {
+    "mtime": 1783803477.528068,
+    "ast_hash": "d7c06270732d917edd5d18db1cc5a341",
+    "semantic_hash": ""
+  },
+  "components/effects/page-glow.tsx": {
+    "mtime": 1783801533.908253,
+    "ast_hash": "9f98a591f54b36d250ce686691a8a2a7",
+    "semantic_hash": ""
+  },
+  "public/images/djsnakeland.jpg": {
+    "mtime": 1783806727.321139,
+    "ast_hash": "77296eb48262cfcf2e27bfd8dc70a478",
+    "semantic_hash": ""
+  },
+  "public/images/eventHbarPresAlyphland.jpg": {
+    "mtime": 1783809861.0981853,
+    "ast_hash": "812a02b718d6c84625cc1d59f9841860",
+    "semantic_hash": ""
+  },
+  "public/videos/home-bg.mp4": {
+    "mtime": 1783803127.347302,
+    "ast_hash": "27cb7becff2c302ec6fc9db2c0bb9114",
     "semantic_hash": ""
   }
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { use, useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useTicketsModal } from '@/lib/context';
 import { notFound } from 'next/navigation';

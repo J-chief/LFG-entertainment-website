@@ -1,16 +1,16 @@
 # Graph Report - LFG Gemini Front end  (2026-07-12)
 
 ## Corpus Check
-- 47 files · ~18,162,817 words
+- 44 files · ~18,055,893 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 319 nodes · 370 edges · 23 communities (18 shown, 5 thin omitted)
+- 298 nodes · 350 edges · 22 communities (18 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7091e6ae`
+- Built from commit: `a4ee23cc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,7 +33,6 @@
 - next.config.ts
 - postcss.config.mjs
 - 2. Home Page
-- cursor-tubes-client.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
@@ -56,17 +55,17 @@
   app/(site)/lfg-nation/page.tsx → lib/context.tsx
 - `Footer()` --calls--> `useTalkNow()`  [EXTRACTED]
   components/sections/footer.tsx → lib/context.tsx
-- `Header()` --calls--> `useTicketsModal()`  [EXTRACTED]
+- `Header()` --calls--> `useTalkNow()`  [EXTRACTED]
   components/sections/header.tsx → lib/context.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (23 total, 5 thin omitted)
+## Communities (22 total, 4 thin omitted)
 
 ### Community 0 - "CONTENT.md — LFG Entertainment"
-Cohesion: 0.05
-Nodes (40): 10. Global / Micro-copy, 11. To Replace Before Launch (checklist), 1. Brand Voice Rules, 2. Home Page, 3. Events Page, 4. LFG Nation Page, 5. Featured Event — Senter Music Festival, 6. Other Mock Events (+32 more)
+Cohesion: 0.06
+Nodes (32): 10. Global / Micro-copy, 11. To Replace Before Launch (checklist), 1. Brand Voice Rules, 3. Events Page, 4. LFG Nation Page, 5. Featured Event — Senter Music Festival, 6. Other Mock Events, 7. Testimonials (seed — replace with real quotes ASAP) (+24 more)
 
 ### Community 1 - "DESIGN.md — LFG Entertainment"
 Cohesion: 0.08
@@ -89,12 +88,12 @@ Cohesion: 0.12
 Nodes (16): CheckoutFormValues, checkoutSchema, currentDate, TicketsOverlay(), upcomingEvents, mockGalleries, Artist, Event (+8 more)
 
 ### Community 6 - "2. Home Page"
-Cohesion: 0.07
-Nodes (14): GRANITE_ROUTES, GraniteBackground(), Footer(), Header(), NAV_LINKS, ContactFormValues, contactSchema, TalkNowOverlay() (+6 more)
+Cohesion: 0.12
+Nodes (6): Footer(), ContactFormValues, contactSchema, TalkNowOverlay(), useTalkNow(), siteSettings
 
 ### Community 7 - "5. Featured Event — Senter Music Festival"
-Cohesion: 0.24
-Nodes (7): CursorTubes(), LIGHTS, snoise(), Tube(), TUBE_COLORS, TubeProps, useMouseNDC()
+Cohesion: 0.25
+Nodes (8): 2. Home Page, Gallery Preview, Hero (pulls from featured event — see §5), Newsletter, Past Events — section header, Testimonials — section header, Upcoming Events — section header, Why Attend
 
 ### Community 8 - "4. LFG Nation Page"
 Cohesion: 0.10
@@ -102,40 +101,40 @@ Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModu
 
 ### Community 9 - "6. Other Mock Events"
 Cohesion: 0.11
-Nodes (18): devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node, @types/react, @types/react-dom (+10 more)
+Nodes (17): devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node, @types/react, @types/react-dom (+9 more)
 
 ### Community 10 - "layout.tsx"
 Cohesion: 0.13
 Nodes (11): inter, metadata, spaceGrotesk, CursorTrail(), FLASH_IMAGES, MorphData, SmoothScrollProvider(), useFluidCursor() (+3 more)
 
 ### Community 11 - "dependencies"
-Cohesion: 0.12
-Nodes (17): dependencies, clsx, framer-motion, gsap, @hookform/resolvers, lucide-react, next, react (+9 more)
+Cohesion: 0.15
+Nodes (13): dependencies, clsx, framer-motion, gsap, @hookform/resolvers, lucide-react, next, react (+5 more)
 
 ### Community 12 - "README.md"
 Cohesion: 0.50
 Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
 ### Community 16 - "page.tsx"
-Cohesion: 0.12
-Nodes (17): EventsPage(), EventDetailPage(), VENUE_IMAGES, LfgNationPage(), HomePage(), MOSAIC_GRID, MOSAIC_IMAGES, PageBgVideo() (+9 more)
+Cohesion: 0.10
+Nodes (23): EventsPage(), EventDetailPage(), VENUE_IMAGES, LfgNationPage(), HomePage(), MOSAIC_GRID, MOSAIC_IMAGES, PageBgVideo() (+15 more)
 
 ## Knowledge Gaps
-- **181 isolated node(s):** `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID`, `inter`, `spaceGrotesk` (+176 more)
+- **172 isolated node(s):** `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID`, `inter`, `spaceGrotesk` (+167 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `6. Other Mock Events`, `layout.tsx`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+  _High betweenness centrality (0.079) - this node is a cross-community bridge._
 - **Why does `lenis` connect `layout.tsx` to `dependencies`?**
-  _High betweenness centrality (0.075) - this node is a cross-community bridge._
+  _High betweenness centrality (0.074) - this node is a cross-community bridge._
 - **What connects `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID` to the rest of the system?**
-  _182 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _172 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CONTENT.md — LFG Entertainment` be split into smaller, more focused modules?**
-  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
 - **Should `DESIGN.md — LFG Entertainment` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
 - **Should `4. Build Phases` be split into smaller, more focused modules?**

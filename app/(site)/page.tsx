@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import TiltCard from "@/components/ui/tilt-card";
 import { useTicketsModal } from "@/lib/context";
 import { mockEvents, mockPastEvents, testimonials } from "@/lib/mock-data";
@@ -80,9 +80,7 @@ export default function HomePage() {
     if (typeof window === 'undefined') return;
 
     const resizeHandler = () => {
-      if ((window as any).lenis) {
-        (window as any).lenis.resize();
-      }
+      (window as unknown as { lenis?: { resize(): void } }).lenis?.resize();
     };
 
     // Run initially

@@ -71,22 +71,9 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .glass-nav {
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
   /* Custom cursors, trail overlays, etc. */
   .cursor-none-desktop {
     /* Cursor hiding removed per request, default pointer will show */
-  }
-
-  .pointer-events-none-desktop {
-    @media (min-width: 1024px) {
-      pointer-events: none;
-    }
   }
 
   /* Font adjustments */
@@ -115,10 +102,6 @@
     -webkit-text-fill-color: transparent;
   }
   
-  .bg-silver-gradient {
-    background: linear-gradient(135deg, #C0C0C0 0%, #FFFFFF 100%);
-  }
-
   /* Shiny deep-black granite — near-black base, sparkle flecks, glossy specular */
   .bg-granite {
     background-color: #050505;
@@ -163,13 +146,6 @@
   }
 
   /* Hide scrollbar */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
 }
 
 @property --senter-glow-angle {

@@ -36,9 +36,7 @@ export default function EventGalleryPage({ params }: { params: Promise<{ slug: s
     if (typeof window === 'undefined') return;
 
     const resizeHandler = () => {
-      if ((window as any).lenis) {
-        (window as any).lenis.resize();
-      }
+      (window as unknown as { lenis?: { resize(): void } }).lenis?.resize();
     };
 
     // Run initially

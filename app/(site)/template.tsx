@@ -11,9 +11,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useIsomorphicLayoutEffect(() => {
     const resetScroll = () => {
       if (typeof window !== 'undefined') {
-        if ((window as any).lenis) {
-          (window as any).lenis.scrollTo(0, { immediate: true });
-        }
+        (window as unknown as { lenis?: { scrollTo(target: number, opts: { immediate: boolean }): void } })
+          .lenis?.scrollTo(0, { immediate: true });
         window.scrollTo(0, 0);
       }
     };

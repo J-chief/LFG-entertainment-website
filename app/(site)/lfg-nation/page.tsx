@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Star, Sparkles, User, Settings, CreditCard, HelpCircle, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import { Star, Sparkles, User, Calendar, MapPin } from 'lucide-react';
 import TiltCard from '@/components/ui/tilt-card';
 import { mockEvents } from '@/lib/mock-data';
 import { useTicketsModal } from '@/lib/context';

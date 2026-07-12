@@ -490,14 +490,14 @@ export default function HomePage() {
           </h2>
         </div>
 
-        {/* Card Row Grid (Minimum 3 cards in row) */}
-        <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Card Row Grid (Minimum 3 cards in row) — horizontal scroll on mobile */}
+        <div className="reveal flex overflow-x-auto snap-x snap-mandatory gap-8 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {mockEvents.map((event) => {
             const isSoldOut = event.ticketTiers.every(
               (t) => t.quantitySold >= t.quantityTotal,
             );
             return (
-              <TiltCard key={event.slug}>
+              <TiltCard key={event.slug} className="shrink-0 w-[80%] snap-center md:w-full">
                 <div
                   className={cn(
                     'relative h-full',

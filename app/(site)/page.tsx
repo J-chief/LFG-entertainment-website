@@ -10,7 +10,7 @@ import { mockEvents, mockPastEvents, testimonials } from "@/lib/mock-data";
 import CountdownTimer from "@/components/ui/countdown-timer";
 import HeroFlame from "@/components/effects/hero-flame";
 import PageBgVideo from "@/components/effects/page-bg-video";
-import { Calendar, MapPin, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -48,32 +48,70 @@ const MOSAIC_GRID: [number, number][] = [
   [2, 1], // 9 — wide
 ];
 
+// Finger-following drag carousel (mobile). Cards track the touch in real
+// time and snap to the nearest slide on release.
+function useDragCarousel(length: number) {
+  const [index, setIndex] = useState(0);
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const startX = useRef(0);
+  const startY = useRef(0);
+  const widthRef = useRef(0);
+  const dragXRef = useRef(0);
+  const lockRef = useRef<"h" | "v" | null>(null);
+  const swipedRef = useRef(false);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].clientX;
+    startY.current = e.touches[0].clientY;
+    widthRef.current = e.currentTarget.getBoundingClientRect().width;
+    lockRef.current = null;
+    swipedRef.current = false;
+    dragXRef.current = 0;
+    setDragging(true);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    const dx = e.touches[0].clientX - startX.current;
+    const dy = e.touches[0].clientY - startY.current;
+    if (lockRef.current === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+      lockRef.current = Math.abs(dx) > Math.abs(dy) ? "h" : "v";
+    }
+    if (lockRef.current === "h") {
+      dragXRef.current = dx;
+      setDragX(dx);
+      if (Math.abs(dx) > 8) swipedRef.current = true;
+    }
+  };
+
+  const onTouchEnd = () => {
+    const dx = dragXRef.current;
+    const slide = widthRef.current * 0.5 || 1;
+    let next = index;
+    if (Math.abs(dx) > slide * 0.25) {
+      next = dx < 0 ? Math.min(length - 1, index + 1) : Math.max(0, index - 1);
+    }
+    setIndex(next);
+    setDragX(0);
+    setDragging(false);
+    lockRef.current = null;
+  };
+
+  return {
+    index,
+    dragX,
+    dragging,
+    swipedRef,
+    handlers: { onTouchStart, onTouchMove, onTouchEnd },
+  };
+}
+
 export default function HomePage() {
   const mosaicRef = useRef<HTMLDivElement | null>(null);
   const statsRef = useRef<HTMLDivElement | null>(null);
   const whyRef = useRef<HTMLDivElement | null>(null);
-  const [eventIndex, setEventIndex] = useState(0);
-  const [archiveIndex, setArchiveIndex] = useState(0);
-  // Swipe tracking for the mobile "What's Coming" carousel
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const swipedRef = useRef(false);
-
-  const handleEventTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    swipedRef.current = false;
-  };
-
-  const handleEventTouchEnd = (e: React.TouchEvent) => {
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const dy = e.changedTouches[0].clientY - touchStartY.current;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      swipedRef.current = true;
-      if (dx < 0) setEventIndex((i) => Math.min(mockEvents.length - 1, i + 1));
-      else setEventIndex((i) => Math.max(0, i - 1));
-    }
-  };
+  const calendar = useDragCarousel(mockEvents.length);
+  const archive = useDragCarousel(mockPastEvents.length);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -515,13 +553,17 @@ export default function HomePage() {
         {/* Swipeable peek carousel (mobile) / grid (desktop) */}
         <div className="reveal relative">
         <div
-          className="overflow-hidden md:overflow-visible"
-          onTouchStart={handleEventTouchStart}
-          onTouchEnd={handleEventTouchEnd}
+          className="overflow-hidden md:overflow-visible touch-pan-y"
+          onTouchStart={calendar.handlers.onTouchStart}
+          onTouchMove={calendar.handlers.onTouchMove}
+          onTouchEnd={calendar.handlers.onTouchEnd}
         >
         <div
-          className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform duration-500 ease-out md:!translate-x-0"
-          style={{ transform: `translateX(calc(25% - ${eventIndex * 50}%))` }}
+          className={cn(
+            "flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform ease-out md:!translate-x-0",
+            calendar.dragging ? "duration-0" : "duration-500",
+          )}
+          style={{ transform: `translateX(calc(25% - ${calendar.index * 50}% + ${calendar.dragX}px))` }}
         >
           {mockEvents.map((event) => {
             const isSoldOut = event.ticketTiers.every(
@@ -542,7 +584,7 @@ export default function HomePage() {
                     scroll={false}
                     aria-label={event.title}
                     onClick={(e) => {
-                      if (swipedRef.current) e.preventDefault();
+                      if (calendar.swipedRef.current) e.preventDefault();
                     }}
                     className="absolute inset-0 z-10 md:hidden"
                   />
@@ -688,32 +730,20 @@ export default function HomePage() {
           </h2>
         </div>
 
-        {/* Peek carousel (mobile) / grid (desktop) */}
+        {/* Swipeable peek carousel (mobile) / grid (desktop) */}
         <div className="reveal relative">
-        {/* Prev / Next arrows — mobile only */}
-        <button
-          type="button"
-          aria-label="Previous past event"
-          onClick={() => setArchiveIndex((i) => Math.max(0, i - 1))}
-          disabled={archiveIndex === 0}
-          className="md:hidden absolute left-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          type="button"
-          aria-label="Next past event"
-          onClick={() => setArchiveIndex((i) => Math.min(mockPastEvents.length - 1, i + 1))}
-          disabled={archiveIndex >= mockPastEvents.length - 1}
-          className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-        <div className="overflow-hidden md:overflow-visible">
         <div
-          className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform duration-500 ease-out md:!translate-x-0"
-          style={{ transform: `translateX(calc(25% - ${archiveIndex * 50}%))` }}
+          className="overflow-hidden md:overflow-visible touch-pan-y"
+          onTouchStart={archive.handlers.onTouchStart}
+          onTouchMove={archive.handlers.onTouchMove}
+          onTouchEnd={archive.handlers.onTouchEnd}
+        >
+        <div
+          className={cn(
+            "flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform ease-out md:!translate-x-0",
+            archive.dragging ? "duration-0" : "duration-500",
+          )}
+          style={{ transform: `translateX(calc(25% - ${archive.index * 50}% + ${archive.dragX}px))` }}
         >
           {mockPastEvents.map((event) => (
             <div
@@ -721,6 +751,9 @@ export default function HomePage() {
               className="shrink-0 basis-1/2 px-1.5 md:basis-auto md:px-0"
             >
             <Link
+              onClick={(e) => {
+                if (archive.swipedRef.current) e.preventDefault();
+              }}
               href={`/gallery/${event.slug}`}
               scroll={false}
               className="group relative flex flex-col h-full bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-500 transition-all duration-300 cursor-none-desktop"

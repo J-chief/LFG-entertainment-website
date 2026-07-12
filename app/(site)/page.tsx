@@ -54,6 +54,26 @@ export default function HomePage() {
   const whyRef = useRef<HTMLDivElement | null>(null);
   const [eventIndex, setEventIndex] = useState(0);
   const [archiveIndex, setArchiveIndex] = useState(0);
+  // Swipe tracking for the mobile "What's Coming" carousel
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const swipedRef = useRef(false);
+
+  const handleEventTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    swipedRef.current = false;
+  };
+
+  const handleEventTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      swipedRef.current = true;
+      if (dx < 0) setEventIndex((i) => Math.min(mockEvents.length - 1, i + 1));
+      else setEventIndex((i) => Math.max(0, i - 1));
+    }
+  };
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -492,42 +512,26 @@ export default function HomePage() {
           </h2>
         </div>
 
-        {/* Card carousel (mobile) / grid (desktop) */}
+        {/* Swipeable peek carousel (mobile) / grid (desktop) */}
         <div className="reveal relative">
-        {/* Prev / Next arrows — mobile only */}
-        <button
-          type="button"
-          aria-label="Previous event"
-          onClick={() => setEventIndex((i) => Math.max(0, i - 1))}
-          disabled={eventIndex === 0}
-          className="md:hidden absolute left-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
+        <div
+          className="overflow-hidden md:overflow-visible"
+          onTouchStart={handleEventTouchStart}
+          onTouchEnd={handleEventTouchEnd}
         >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          type="button"
-          aria-label="Next event"
-          onClick={() => setEventIndex((i) => Math.min(mockEvents.length - 1, i + 1))}
-          disabled={eventIndex >= mockEvents.length - 1}
-          className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-        <div className="overflow-hidden md:overflow-visible">
         <div
           className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform duration-500 ease-out md:!translate-x-0"
-          style={{ transform: `translateX(-${eventIndex * 100}%)` }}
+          style={{ transform: `translateX(calc(25% - ${eventIndex * 50}%))` }}
         >
           {mockEvents.map((event) => {
             const isSoldOut = event.ticketTiers.every(
               (t) => t.quantitySold >= t.quantityTotal,
             );
             return (
-              <TiltCard key={event.slug} className="shrink-0 basis-full md:basis-auto">
+              <TiltCard key={event.slug} className="shrink-0 basis-1/2 px-1.5 md:basis-auto md:px-0">
                 <div
                   className={cn(
-                    'relative h-full max-w-[66%] mx-auto md:max-w-none md:mx-0',
+                    'relative h-full',
                     event.slug === 'senter-music-festival-2026' && 'senter-glow',
                   )}
                 >
@@ -537,6 +541,9 @@ export default function HomePage() {
                     href={`/events/${event.slug}`}
                     scroll={false}
                     aria-label={event.title}
+                    onClick={(e) => {
+                      if (swipedRef.current) e.preventDefault();
+                    }}
                     className="absolute inset-0 z-10 md:hidden"
                   />
                   {/* Poster Container */}

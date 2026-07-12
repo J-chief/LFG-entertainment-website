@@ -398,7 +398,7 @@ export default function HomePage() {
             return (
               <div
                 key={idx}
-                className="mosaic-img relative overflow-hidden rounded filter grayscale contrast-125 brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-500"
+                className="mosaic-img relative overflow-hidden rounded filter contrast-110 saturate-125 hover:saturate-150 transition-all duration-500"
                 style={{
                   gridColumn: `span ${colSpan}`,
                   gridRow: `span ${rowSpan}`,

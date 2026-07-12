@@ -49,17 +49,22 @@ const MOSAIC_GRID: [number, number][] = [
 ];
 
 // Finger-following drag carousel (mobile). Cards track the touch in real
-// time and snap to the nearest slide on release.
+// time, then glide to the nearest slide with velocity-based momentum and a
+// decelerating ease on release.
 function useDragCarousel(length: number) {
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [duration, setDuration] = useState(500);
   const startX = useRef(0);
   const startY = useRef(0);
   const widthRef = useRef(0);
   const dragXRef = useRef(0);
   const lockRef = useRef<"h" | "v" | null>(null);
   const swipedRef = useRef(false);
+  const lastX = useRef(0);
+  const lastT = useRef(0);
+  const velRef = useRef(0); // px per ms; negative = moving left
 
   const onTouchStart = (e: React.TouchEvent) => {
     startX.current = e.touches[0].clientX;
@@ -68,16 +73,25 @@ function useDragCarousel(length: number) {
     lockRef.current = null;
     swipedRef.current = false;
     dragXRef.current = 0;
+    lastX.current = e.touches[0].clientX;
+    lastT.current = performance.now();
+    velRef.current = 0;
     setDragging(true);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    const dx = e.touches[0].clientX - startX.current;
+    const x = e.touches[0].clientX;
+    const dx = x - startX.current;
     const dy = e.touches[0].clientY - startY.current;
     if (lockRef.current === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
       lockRef.current = Math.abs(dx) > Math.abs(dy) ? "h" : "v";
     }
     if (lockRef.current === "h") {
+      const now = performance.now();
+      const dt = now - lastT.current;
+      if (dt > 0) velRef.current = (x - lastX.current) / dt;
+      lastX.current = x;
+      lastT.current = now;
       dragXRef.current = dx;
       setDragX(dx);
       if (Math.abs(dx) > 8) swipedRef.current = true;
@@ -86,11 +100,17 @@ function useDragCarousel(length: number) {
 
   const onTouchEnd = () => {
     const dx = dragXRef.current;
+    const v = velRef.current;
     const slide = widthRef.current * 0.5 || 1;
+    const flick = Math.abs(v) > 0.3;
     let next = index;
-    if (Math.abs(dx) > slide * 0.25) {
+    if (flick) {
+      next = v < 0 ? Math.min(length - 1, index + 1) : Math.max(0, index - 1);
+    } else if (Math.abs(dx) > slide * 0.25) {
       next = dx < 0 ? Math.min(length - 1, index + 1) : Math.max(0, index - 1);
     }
+    // Longer glide for faster flicks so momentum decays instead of snapping.
+    setDuration(flick ? Math.min(700, 420 + Math.abs(v) * 260) : 450);
     setIndex(next);
     setDragX(0);
     setDragging(false);
@@ -101,6 +121,7 @@ function useDragCarousel(length: number) {
     index,
     dragX,
     dragging,
+    duration,
     swipedRef,
     handlers: { onTouchStart, onTouchMove, onTouchEnd },
   };
@@ -559,11 +580,13 @@ export default function HomePage() {
           onTouchEnd={calendar.handlers.onTouchEnd}
         >
         <div
-          className={cn(
-            "flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform ease-out md:!translate-x-0",
-            calendar.dragging ? "duration-0" : "duration-500",
-          )}
-          style={{ transform: `translateX(calc(25% - ${calendar.index * 50}% + ${calendar.dragX}px))` }}
+          className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 md:![transform:none]"
+          style={{
+            transform: `translateX(calc(25% - ${calendar.index * 50}% + ${calendar.dragX}px))`,
+            transition: calendar.dragging
+              ? "none"
+              : `transform ${calendar.duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+          }}
         >
           {mockEvents.map((event) => {
             const isSoldOut = event.ticketTiers.every(
@@ -577,7 +600,7 @@ export default function HomePage() {
                     event.slug === 'senter-music-festival-2026' && 'senter-glow',
                   )}
                 >
-                <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[320px] md:min-h-[480px]">
+                <div className="group relative flex flex-col justify-between h-full bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[320px] md:min-h-[480px]">
                   {/* Mobile: whole card links to event details */}
                   <Link
                     href={`/events/${event.slug}`}
@@ -739,11 +762,13 @@ export default function HomePage() {
           onTouchEnd={archive.handlers.onTouchEnd}
         >
         <div
-          className={cn(
-            "flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform ease-out md:!translate-x-0",
-            archive.dragging ? "duration-0" : "duration-500",
-          )}
-          style={{ transform: `translateX(calc(25% - ${archive.index * 50}% + ${archive.dragX}px))` }}
+          className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 md:![transform:none]"
+          style={{
+            transform: `translateX(calc(25% - ${archive.index * 50}% + ${archive.dragX}px))`,
+            transition: archive.dragging
+              ? "none"
+              : `transform ${archive.duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+          }}
         >
           {mockPastEvents.map((event) => (
             <div

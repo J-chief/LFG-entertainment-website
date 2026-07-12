@@ -53,6 +53,7 @@ export default function HomePage() {
   const statsRef = useRef<HTMLDivElement | null>(null);
   const whyRef = useRef<HTMLDivElement | null>(null);
   const [eventIndex, setEventIndex] = useState(0);
+  const [archiveIndex, setArchiveIndex] = useState(0);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -531,6 +532,13 @@ export default function HomePage() {
                   )}
                 >
                 <div className="group relative flex flex-col justify-between bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-600 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)] transition-all duration-300 min-h-[320px] md:min-h-[480px]">
+                  {/* Mobile: whole card links to event details */}
+                  <Link
+                    href={`/events/${event.slug}`}
+                    scroll={false}
+                    aria-label={event.title}
+                    className="absolute inset-0 z-10 md:hidden"
+                  />
                   {/* Poster Container */}
                   <div className="relative aspect-[9/16] w-full overflow-hidden">
                     {isSoldOut && (
@@ -564,12 +572,12 @@ export default function HomePage() {
                       <h3 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-white transition-colors">
                         {event.title}
                       </h3>
-                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                      <p className="hidden md:block text-xs text-gray-400 line-clamp-2 leading-relaxed">
                         {event.shortDescription}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 mt-6 border-t border-gray-900 pt-4">
+                    <div className="hidden md:flex items-center gap-3 mt-6 border-t border-gray-900 pt-4">
                       <button
                         onClick={(e) => {
                           if (isSoldOut) e.preventDefault();
@@ -673,10 +681,39 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Peek carousel (mobile) / grid (desktop) */}
+        <div className="reveal relative">
+        {/* Prev / Next arrows — mobile only */}
+        <button
+          type="button"
+          aria-label="Previous past event"
+          onClick={() => setArchiveIndex((i) => Math.max(0, i - 1))}
+          disabled={archiveIndex === 0}
+          className="md:hidden absolute left-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next past event"
+          onClick={() => setArchiveIndex((i) => Math.min(mockPastEvents.length - 1, i + 1))}
+          disabled={archiveIndex >= mockPastEvents.length - 1}
+          className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/70 border border-gray-700 text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-black transition-colors"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        <div className="overflow-hidden md:overflow-visible">
+        <div
+          className="flex md:grid md:grid-cols-3 gap-0 md:gap-8 transition-transform duration-500 ease-out md:!translate-x-0"
+          style={{ transform: `translateX(calc(25% - ${archiveIndex * 50}%))` }}
+        >
           {mockPastEvents.map((event) => (
-            <Link
+            <div
               key={event.slug}
+              className="shrink-0 basis-1/2 px-1.5 md:basis-auto md:px-0"
+            >
+            <Link
               href={`/gallery/${event.slug}`}
               scroll={false}
               className="group relative flex flex-col h-full bg-[#0F0F0F] rounded-lg border border-gray-900 overflow-hidden hover:border-gray-500 transition-all duration-300 cursor-none-desktop"
@@ -703,7 +740,10 @@ export default function HomePage() {
                 </p>
               </div>
             </Link>
+            </div>
           ))}
+        </div>
+        </div>
         </div>
       </section>
 

@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "app/(site)/page.tsx": {
-    "mtime": 1783838854.6908689,
-    "ast_hash": "9f17feafb2ee2e311051f1a97a163bf4",
+    "mtime": 1783839374.9820302,
+    "ast_hash": "b0c433943e705cf9b363ca909328de7a",
     "semantic_hash": ""
   },
   "app/layout.tsx": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1783839063.5452406,
-    "ast_hash": "03c2dd39a99479b9a1e4ad0e6caeb6a1",
+    "mtime": 1783839463.7191868,
+    "ast_hash": "377dd44b3b91a2e9d96f6a14fcf2a7fe",
     "semantic_hash": ""
   },
   "components/effects/cursor-tubes-client.tsx": {

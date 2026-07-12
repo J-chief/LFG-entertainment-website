@@ -328,17 +328,17 @@ export default function HomePage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <div className="flex flex-row gap-3 sm:gap-4 items-center justify-center w-full">
             <button
               onClick={() => openTickets(featuredEvent.slug)}
-              className="px-8 py-4 rounded-full bg-white text-black hover:bg-white/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 text-xs font-display font-bold uppercase tracking-widest min-w-[180px] cursor-pointer"
+              className="px-4 py-2.5 sm:px-8 sm:py-4 rounded-full bg-white text-black hover:bg-white/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 text-[10px] sm:text-xs font-display font-bold uppercase tracking-widest min-w-0 sm:min-w-[180px] cursor-pointer"
             >
               Buy Tickets
             </button>
             <Link
               href={`/events/${featuredEvent.slug}`}
               scroll={false}
-              className="px-8 py-4 rounded-full border border-gray-600 hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-xs font-display uppercase tracking-widest min-w-[180px]"
+              className="px-4 py-2.5 sm:px-8 sm:py-4 rounded-full border border-gray-600 hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-[10px] sm:text-xs font-display uppercase tracking-widest min-w-0 sm:min-w-[180px]"
             >
               View Details
             </Link>

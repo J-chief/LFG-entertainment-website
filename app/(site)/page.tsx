@@ -300,9 +300,9 @@ export default function HomePage() {
         <HeroFlame />
 
         {/* Centered stack content */}
-        <div className="relative z-20 flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-6 pt-10">
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-end w-full max-w-4xl mx-auto px-6 pt-10 pb-6">
           {/* Meta row badges */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <span className="px-3 py-1 rounded-full border border-white/20 bg-white/5 text-[9px] font-display tracking-[0.25em] uppercase">
               NEXT MAJOR EVENT
             </span>
@@ -313,17 +313,17 @@ export default function HomePage() {
           </div>
 
           {/* Event Title */}
-          <h1 className="text-4xl sm:text-6xl md:text-[5rem] font-display font-black leading-none uppercase tracking-tighter mb-4 max-w-3xl">
+          <h1 className="text-3xl sm:text-5xl md:text-[4rem] font-display font-black leading-none uppercase tracking-tighter mb-3 max-w-3xl">
             {featuredEvent.title}
           </h1>
 
           {/* Short description */}
-          <p className="relative z-30 text-sm md:text-base text-gray-300 w-full max-w-[65ch] mx-auto mb-8 font-sans leading-relaxed">
+          <p className="relative z-30 text-sm md:text-base text-gray-300 w-full max-w-[65ch] mx-auto mb-6 font-sans leading-relaxed">
             {featuredEvent.shortDescription}
           </p>
 
           {/* Countdown Clock */}
-          <div className="mb-10 w-full">
+          <div className="mb-6 w-full">
             <CountdownTimer targetDate={featuredEvent.startDate} />
           </div>
 

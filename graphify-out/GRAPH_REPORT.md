@@ -1,16 +1,16 @@
 # Graph Report - LFG Gemini Front end  (2026-07-12)
 
 ## Corpus Check
-- 43 files · ~18,142,857 words
+- 47 files · ~18,162,817 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 309 nodes · 359 edges · 23 communities (19 shown, 4 thin omitted)
+- 319 nodes · 370 edges · 23 communities (18 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `64eed7e2`
+- Built from commit: `7091e6ae`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -56,17 +56,17 @@
   app/(site)/lfg-nation/page.tsx → lib/context.tsx
 - `Footer()` --calls--> `useTalkNow()`  [EXTRACTED]
   components/sections/footer.tsx → lib/context.tsx
-- `Header()` --calls--> `useTalkNow()`  [EXTRACTED]
+- `Header()` --calls--> `useTicketsModal()`  [EXTRACTED]
   components/sections/header.tsx → lib/context.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (23 total, 4 thin omitted)
+## Communities (23 total, 5 thin omitted)
 
 ### Community 0 - "CONTENT.md — LFG Entertainment"
-Cohesion: 0.06
-Nodes (32): 10. Global / Micro-copy, 11. To Replace Before Launch (checklist), 1. Brand Voice Rules, 3. Events Page, 4. LFG Nation Page, 5. Featured Event — Senter Music Festival, 6. Other Mock Events, 7. Testimonials (seed — replace with real quotes ASAP) (+24 more)
+Cohesion: 0.05
+Nodes (40): 10. Global / Micro-copy, 11. To Replace Before Launch (checklist), 1. Brand Voice Rules, 2. Home Page, 3. Events Page, 4. LFG Nation Page, 5. Featured Event — Senter Music Festival, 6. Other Mock Events (+32 more)
 
 ### Community 1 - "DESIGN.md — LFG Entertainment"
 Cohesion: 0.08
@@ -89,8 +89,8 @@ Cohesion: 0.12
 Nodes (16): CheckoutFormValues, checkoutSchema, currentDate, TicketsOverlay(), upcomingEvents, mockGalleries, Artist, Event (+8 more)
 
 ### Community 6 - "2. Home Page"
-Cohesion: 0.09
-Nodes (6): Footer(), ContactFormValues, contactSchema, TalkNowOverlay(), useTalkNow(), siteSettings
+Cohesion: 0.07
+Nodes (14): GRANITE_ROUTES, GraniteBackground(), Footer(), Header(), NAV_LINKS, ContactFormValues, contactSchema, TalkNowOverlay() (+6 more)
 
 ### Community 7 - "5. Featured Event — Senter Music Festival"
 Cohesion: 0.24
@@ -117,17 +117,13 @@ Cohesion: 0.50
 Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
 ### Community 16 - "page.tsx"
-Cohesion: 0.11
-Nodes (22): EventsPage(), EventDetailPage(), VENUE_IMAGES, LfgNationPage(), HomePage(), MOSAIC_GRID, MOSAIC_IMAGES, Header() (+14 more)
-
-### Community 21 - "2. Home Page"
-Cohesion: 0.25
-Nodes (8): 2. Home Page, Gallery Preview, Hero (pulls from featured event — see §5), Newsletter, Past Events — section header, Testimonials — section header, Upcoming Events — section header, Why Attend
+Cohesion: 0.12
+Nodes (17): EventsPage(), EventDetailPage(), VENUE_IMAGES, LfgNationPage(), HomePage(), MOSAIC_GRID, MOSAIC_IMAGES, PageBgVideo() (+9 more)
 
 ## Knowledge Gaps
-- **180 isolated node(s):** `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID`, `inter`, `spaceGrotesk` (+175 more)
+- **181 isolated node(s):** `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID`, `inter`, `spaceGrotesk` (+176 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -137,9 +133,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `lenis` connect `layout.tsx` to `dependencies`?**
   _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **What connects `VENUE_IMAGES`, `MOSAIC_IMAGES`, `MOSAIC_GRID` to the rest of the system?**
-  _180 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _182 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CONTENT.md — LFG Entertainment` be split into smaller, more focused modules?**
-  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `DESIGN.md — LFG Entertainment` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
 - **Should `4. Build Phases` be split into smaller, more focused modules?**

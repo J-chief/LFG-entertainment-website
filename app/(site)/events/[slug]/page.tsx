@@ -136,26 +136,26 @@ export default function EventDetailPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* Dynamic alignment grid container */}
-        <div className="relative z-20 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 mt-32">
+        <div className="relative z-20 w-full h-full px-5 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12 mt-32">
           {/* Left Middle: title + description */}
-          <div className="flex flex-col items-start gap-6 max-w-2xl w-full">
+          <div className="flex flex-col items-start text-left gap-4 md:gap-6 max-w-2xl w-full">
             {isEventSoldOut && (
               <span className="px-3 py-1 rounded bg-red-600 text-white text-[9px] font-display font-bold uppercase tracking-wider mb-2">
                 EVENT SOLD OUT
               </span>
             )}
-            <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-display font-black tracking-tighter uppercase leading-[0.85] text-white break-words">
+            <h1 className="text-3xl sm:text-5xl md:text-8xl lg:text-[10rem] font-display font-black tracking-tighter uppercase leading-[0.85] text-white break-words">
               {event.title}
             </h1>
-            <p className="text-sm md:text-base text-gray-400 font-sans leading-relaxed max-w-lg">
+            <p className="text-xs md:text-base text-gray-400 font-sans leading-relaxed max-w-lg">
               {event.shortDescription}
             </p>
           </div>
 
           {/* Right Middle: date + location glassbox */}
-          <div className="w-full max-w-sm shrink-0 flex flex-col justify-center">
-            <div className="glass-card p-8 rounded-2xl flex flex-col gap-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
-              <div className="flex flex-col gap-4 text-sm text-gray-300">
+          <div className="w-auto max-w-xs md:max-w-sm shrink-0 self-end md:self-auto flex flex-col justify-center">
+            <div className="glass-card p-5 md:p-8 rounded-2xl flex flex-col gap-5 md:gap-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
+              <div className="flex flex-col gap-3 md:gap-4 text-xs md:text-sm text-gray-300">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                     <Calendar className="w-4 h-4 text-white" />

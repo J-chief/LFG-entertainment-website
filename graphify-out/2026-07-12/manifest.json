@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "app/(site)/events/page.tsx": {
-    "mtime": 1783795273.214833,
-    "ast_hash": "7860f4495907aa4ddab1a0f681ceccf6",
+    "mtime": 1783798218.6085098,
+    "ast_hash": "e0ad9a05ae59de8477cf91cddf3ff7cd",
     "semantic_hash": ""
   },
   "app/(site)/gallery/[slug]/page.tsx": {
@@ -65,12 +65,12 @@
     "semantic_hash": ""
   },
   "app/(site)/page.tsx": {
-    "mtime": 1783796936.7017233,
-    "ast_hash": "d1082c86c27b804e0f36253be9b9eb02",
+    "mtime": 1783799838.6279328,
+    "ast_hash": "ba5aa46f315580fb27c2b79abac35729",
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1783675399.5434697,
+    "mtime": 1783799468.3349504,
     "ast_hash": "31de46cfb49a3d6fc4afa9478986a18b",
     "semantic_hash": ""
   },
@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "components/effects/cursor-trail.tsx": {
-    "mtime": 1783796978.8511765,
-    "ast_hash": "398db5a90833fca211cbe4db99b535a1",
+    "mtime": 1783799487.7611592,
+    "ast_hash": "54a45a0ddf151fea5b8a341110085c1c",
     "semantic_hash": ""
   },
   "components/effects/page-transition.tsx": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "components/effects/smooth-scroll.tsx": {
-    "mtime": 1783678006.7818859,
-    "ast_hash": "0d4e4e5f68f175fd469cd6d1be184632",
+    "mtime": 1783799820.6657395,
+    "ast_hash": "f6d58df8871a8535a3b065a84e4f6c8c",
     "semantic_hash": ""
   },
   "components/sections/footer.tsx": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "components/sections/header.tsx": {
-    "mtime": 1783796907.8044126,
-    "ast_hash": "c6f74f31c6012f03ca7fdf338c9bfd8f",
+    "mtime": 1783799158.0916138,
+    "ast_hash": "8c83255cfec9731b5dd7ad031afa3b63",
     "semantic_hash": ""
   },
   "components/sections/talk-now-overlay.tsx": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1783673081.0173676,
-    "ast_hash": "45bfe30e95bf4a09580c7c74595d3123",
+    "mtime": 1783799013.6600604,
+    "ast_hash": "91811b7ff1c7b428a09319c65f9c97b3",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -2607,6 +2607,26 @@
   "public/images/senterfesthome.png": {
     "mtime": 1783796329.5491936,
     "ast_hash": "c31b3f17f9b798206cbe9c10aec7cf85",
+    "semantic_hash": ""
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1783800475.3787808,
+    "ast_hash": "d17fc12f683d081e52d2c9b7177c41b2",
+    "semantic_hash": ""
+  },
+  "components/effects/cursor-tubes-client.tsx": {
+    "mtime": 1783799371.61291,
+    "ast_hash": "ce37986fb73937f583bd87be2488157c",
+    "semantic_hash": ""
+  },
+  "components/effects/cursor-tubes.tsx": {
+    "mtime": 1783799345.4576287,
+    "ast_hash": "aa4ecb3099382dd1713b5a2da2b0a6f0",
+    "semantic_hash": ""
+  },
+  "hooks/use-FluidCursor.ts": {
+    "mtime": 1783798390.3803573,
+    "ast_hash": "7cc257723d88e286436ee2cbc940ef60",
     "semantic_hash": ""
   }
 }
